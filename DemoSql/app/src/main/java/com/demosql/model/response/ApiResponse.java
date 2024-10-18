@@ -1,14 +1,16 @@
 package com.demosql.model.response;
 
 public class ApiResponse<T> {
+    private int code;
     private T data;
     private String message;
     private boolean success;
 
-    public ApiResponse(T data, String message, boolean success) {
+    public ApiResponse(int code, boolean success, String message, T data) {
         this.data = data;
         this.message = message;
         this.success = success;
+        this.code = code;
     }
 
     public T getData() {
@@ -21,6 +23,10 @@ public class ApiResponse<T> {
 
     public boolean isSuccess() {
         return success;
+    }
+
+    public int getCode() {
+        return code;
     }
 }
 

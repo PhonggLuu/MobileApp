@@ -4,7 +4,7 @@
     android:id="@+id/wellcome_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="@dimen/padding_16"
+    android:padding="@dimen/size_16"
     android:background="@color/background_color">
 
     <ImageView
@@ -12,7 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="@dimen/margin_120"
+        android:layout_marginTop="@dimen/size_120"
         android:contentDescription="@string/fpt_logo_description"
         android:src="@drawable/fpt_logo"
         tools:ignore="ImageContrastCheck" />

@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:columnCount="2"
+    >
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+    <!--<LinearLayout
+        android:id="@+id/horizontal_linear"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        >
+        <LinearLayout
+            android:id="@+id/vertical_linear"
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+            <RelativeLayout
+                android:id="@+id/product"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <ImageView
+                    android:id="@+id/productImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/aa"
+                    android:layout_above="@id/productName"
+                    android:background="@color/colorPrimary"/>
+                <TextView
+                    android:id="@+id/productName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@id/productPrice"
+                    android:text="Product Name"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginBottom="5dp"
+                    android:textSize="@dimen/text_size12"
+                    android:fontFamily="sans-serif-condensed"
+                    android:layout_alignParentStart="true" />
+                <TextView
+                    android:id="@+id/productPrice"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginBottom="5dp"
+                    android:text="Product Price"
+                    android:textSize="@dimen/text_size12"
+                    android:fontFamily="sans-serif-condensed"
+                    android:layout_alignParentStart="true" />
+            </RelativeLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/vertical_linear1"
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+            <RelativeLayout
+                android:id="@+id/product1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <ImageView
+                    android:id="@+id/productImage1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/aa"
+                    android:layout_above="@id/productName1"
+                    android:background="@color/colorPrimary"/>
+                <TextView
+                    android:id="@+id/productName1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@id/productPrice1"
+                    android:text="Product Name"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginBottom="5dp"
+                    android:textSize="@dimen/text_size12"
+                    android:fontFamily="sans-serif-condensed"
+                    android:layout_alignParentStart="true" />
+                <TextView
+                    android:id="@+id/productPrice1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginBottom="5dp"
+                    android:text="Product Price"
+                    android:textSize="@dimen/text_size12"
+                    android:fontFamily="sans-serif-condensed"
+                    android:layout_alignParentStart="true" />
+            </RelativeLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/horizontal_linear1"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        >
+        <LinearLayout
+            android:id="@+id/vertical_linear2"
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+            <RelativeLayout
+                android:id="@+id/product2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <ImageView
+                    android:id="@+id/productImage2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/aa"
+                    android:layout_above="@id/productName2"
+                    android:background="@color/colorPrimary"/>
+                <TextView
+                    android:id="@+id/productName2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@id/productPrice2"
+                    android:text="Product Name"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginBottom="5dp"
+                    android:textSize="@dimen/text_size12"
+                    android:fontFamily="sans-serif-condensed"
+                    android:layout_alignParentStart="true" />
+                <TextView
+                    android:id="@+id/productPrice2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginBottom="5dp"
+                    android:text="Product Price"
+                    android:textSize="@dimen/text_size12"
+                    android:fontFamily="sans-serif-condensed"
+                    android:layout_alignParentStart="true" />
+            </RelativeLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/vertical_linear3"
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+            <RelativeLayout
+                android:id="@+id/product3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <ImageView
+                    android:id="@+id/productImage3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/aa"
+                    android:layout_above="@id/productName3"
+                    android:background="@color/colorPrimary"/>
+                <TextView
+                    android:id="@+id/productName3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@id/productPrice3"
+                    android:text="Product Name"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginBottom="5dp"
+                    android:textSize="@dimen/text_size12"
+                    android:fontFamily="sans-serif-condensed"
+                    android:layout_alignParentStart="true" />
+                <TextView
+                    android:id="@+id/productPrice3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginBottom="5dp"
+                    android:text="Product Price"
+                    android:textSize="@dimen/text_size12"
+                    android:fontFamily="sans-serif-condensed"
+                    android:layout_alignParentStart="true" />
+            </RelativeLayout>
+        </LinearLayout>
+    </LinearLayout>-->
+</LinearLayout>
