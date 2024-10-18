@@ -1,21 +1,21 @@
 package com.demosql.model.dto;
 
 public class UserLogin {
-    public String username;
+    public String email;
     public String password;
 
-    public UserLogin(String username, String password) {
-        this.username = username;
+    public UserLogin(String email, String password) {
+        this.email = email;
         this.password = password;
     }
 
     // Getter và Setter
-    public String getUsername() {
-        return username;
+    public String getEmail() {
+        return email;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setSmail(String email) {
+        this.email = email;
     }
 
     public String getPassword() {

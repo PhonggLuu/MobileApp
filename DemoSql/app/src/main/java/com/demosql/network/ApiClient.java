@@ -6,7 +6,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ApiClient {
-    private static final String BASE_URL = "https://api.hamazaki.online/api/";
+    private static final String BASE_URL = "https://swd392be.io.vn/api/";
     private static ApiClient instance;
     private ApiService apiService;
 
