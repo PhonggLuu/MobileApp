@@ -39,10 +39,9 @@ public class LoginPresenter {
                         UserResponse userResponse = apiResponse.getData();
                         if (userResponse != null) {
                             String token = userResponse.getToken();
-                            User.setToken(token);
-                            Log.d("Token", token);
+                            /*User.setToken(token);
+                            Log.d("Token", token);*/
                             view.showLoginSuccess();
-                            //view.navigateToWelcome();
                             // Gọi API để lấy hồ sơ người dùng
                             apiService.getCurrentUser("Bearer " + token).enqueue(new Callback<ApiResponse<UserDetailResponse>>() {
                                 @Override

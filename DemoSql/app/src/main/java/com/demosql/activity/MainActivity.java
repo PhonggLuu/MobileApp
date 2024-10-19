@@ -24,10 +24,9 @@ public class MainActivity extends AppCompatActivity implements MainView {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        //UserDetailResponse profileResponse = (UserDetailResponse) getIntent().getSerializableExtra("USER_DETAIL");
+        UserDetailResponse profileResponse = (UserDetailResponse) getIntent().getSerializableExtra("USER_DETAIL");
+        loadFragment(new ProfileFragment(profileResponse));
 
-        /*presenter = new MainPresenter(this);
-        presenter.loadUserProfile(profileResponse);*/
         setupBottomNavigation();
     }
 
@@ -49,7 +48,7 @@ public class MainActivity extends AppCompatActivity implements MainView {
             loadFragment(new ProductsFragment()); // Chuyển đến ProductsFragment
         });*/
 
-        findViewById(R.id.cartBtn).setOnClickListener(v -> {
+        binding.cartBtn.setOnClickListener(v -> {
             loadFragment(new CartFragment()); // Chuyển đến CartFragment
         });
 
