@@ -1,28 +1,23 @@
 package com.demosql.adapter;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.demosql.R;
-import com.demosql.model.response.ProductResponse;
-import com.squareup.picasso.Picasso;
+import com.demosql.databinding.ProductBinding;
+import com.demosql.model.entities.Shirt;
 
 import java.util.List;
 
 public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductViewHolder> {
-    private List<ProductResponse> productList;
+    private List<Shirt> productList;
     private Context context;
 
-    public ProductAdapter( Context context, List<ProductResponse> productList) {
+    public ProductAdapter( Context context, List<Shirt> productList) {
         this.productList = productList;
         this.context = context;
     }
@@ -30,26 +25,19 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
     @NonNull
     @Override
     public ProductViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.product, parent, false);
-        return new ProductViewHolder(view);
+        ProductBinding binding = ProductBinding.inflate(LayoutInflater.from(context), parent, false);
+        return new ProductViewHolder(binding);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ProductViewHolder holder, int position) {
-        holder.bind(productList.get(position));
-        /*ProductResponse product = productList.get(position);
-        holder.productName.setText(product.getName());
-        *//*holder.productImage.setImageResource(product.getImage());*//*
-        Picasso.get()
-                .load(product.getImage()) // Đường dẫn URL
-                .into(holder.productImage);*/
+        Shirt product = productList.get(position);
 
-        /*holder.itemView.setOnClickListener(v -> {
-            Intent intent = new Intent(context, DetailActivity.class);
-            intent.putExtra("product_name", product.getName());
-            intent.putExtra("product_image", product.getImage());
-            context.startActivity(intent);
-        });*/
+        Glide.with(holder.itemView.getContext())
+                .load(product.getUrlImg())
+                .into(holder.binding.detailImage);
+        holder.binding.detailName.setText(product.getName());
+        holder.binding.detailPrice.setText(String.valueOf(product.getPrice()));
     }
 
     @Override
@@ -58,21 +46,12 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
     }
 
     public static class ProductViewHolder extends RecyclerView.ViewHolder {
-        ImageView productImage;
-        TextView productName;
-        TextView productPrice;
+        // Use the ViewBinding class generated for the product layout
+        ProductBinding binding;
 
-        public ProductViewHolder(@NonNull View itemView) {
-            super(itemView);
-            productImage = itemView.findViewById(R.id.productImage);
-            productName = itemView.findViewById(R.id.productName);
-            productPrice = itemView.findViewById(R.id.productPrice);
-        }
-        public void bind(ProductResponse product) {
-            Glide.with(itemView.getContext())
-                    .load(product.getImage()) // Tải hình ảnh từ URL
-                    .into(productImage);
-            productName.setText(product.getName());
+        public ProductViewHolder(@NonNull ProductBinding binding) {
+            super(binding.getRoot());
+            this.binding = binding;
         }
     }
 }

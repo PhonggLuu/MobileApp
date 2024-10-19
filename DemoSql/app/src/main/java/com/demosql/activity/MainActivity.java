@@ -8,8 +8,8 @@ import androidx.fragment.app.Fragment;
 import com.demosql.R;
 import com.demosql.databinding.ActivityMainBinding;
 import com.demosql.fragment.CartFragment;
+import com.demosql.fragment.ProductFragment;
 import com.demosql.fragment.ProfileFragment;
-import com.demosql.model.response.UserDetailResponse;
 import com.demosql.presenter.MainPresenter;
 import com.demosql.view.MainView;
 
@@ -24,17 +24,11 @@ public class MainActivity extends AppCompatActivity implements MainView {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        UserDetailResponse profileResponse = (UserDetailResponse) getIntent().getSerializableExtra("USER_DETAIL");
-        loadFragment(new ProfileFragment(profileResponse));
+        presenter = new MainPresenter(this);
+        loadFragment(new ProductFragment());
 
         setupBottomNavigation();
     }
-
-    /*@Override
-    public void showProfile(UserDetailResponse profileResponse) {
-        ProfileFragment profileFragment = new ProfileFragment(profileResponse);
-        loadFragment(profileFragment);
-    }*/
 
     private void loadFragment(Fragment fragment) {
         getSupportFragmentManager()
@@ -44,17 +38,16 @@ public class MainActivity extends AppCompatActivity implements MainView {
     }
 
     private void setupBottomNavigation() {
-        /*findViewById(R.id.productsBtn).setOnClickListener(v -> {
-            loadFragment(new ProductsFragment()); // Chuyển đến ProductsFragment
-        });*/
+        binding.productsBtn.setOnClickListener(v -> {
+            loadFragment(new ProductFragment());
+        });
 
         binding.cartBtn.setOnClickListener(v -> {
             loadFragment(new CartFragment()); // Chuyển đến CartFragment
         });
 
         binding.profileBtn.setOnClickListener(v -> {
-            UserDetailResponse profileResponse = (UserDetailResponse) getIntent().getSerializableExtra("USER_DETAIL");
-            loadFragment(new ProfileFragment(profileResponse));
+            loadFragment(new ProfileFragment());
         });
     }
 }

@@ -8,4 +8,5 @@ public interface LoginView {
     void showLoginFailed();
     void showLoginError(String s);
     void navigateToMainAndProfile(UserDetailResponse profileResponse);
+    void navigateToMain();
 }

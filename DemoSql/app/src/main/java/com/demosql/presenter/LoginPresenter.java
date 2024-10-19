@@ -39,11 +39,12 @@ public class LoginPresenter {
                         UserResponse userResponse = apiResponse.getData();
                         if (userResponse != null) {
                             String token = userResponse.getToken();
-                            /*User.setToken(token);
-                            Log.d("Token", token);*/
+                            User.setToken(token);
+                            Log.d("Token", token);
                             view.showLoginSuccess();
+                            view.navigateToMain();
                             // Gọi API để lấy hồ sơ người dùng
-                            apiService.getCurrentUser("Bearer " + token).enqueue(new Callback<ApiResponse<UserDetailResponse>>() {
+                           /* apiService.getCurrentUser("Bearer " + token).enqueue(new Callback<ApiResponse<UserDetailResponse>>() {
                                 @Override
                                 public void onResponse(@NonNull Call<ApiResponse<UserDetailResponse>> call, @NonNull Response<ApiResponse<UserDetailResponse>> response) {
                                     if (response.isSuccessful()) {
@@ -63,7 +64,7 @@ public class LoginPresenter {
                                     Log.e("LoginPresenter", "Error: " + t.getMessage());
                                     view.showLoginError("Error: " + t.getMessage());
                                 }
-                            });
+                            });*/
                         } else {
                             Log.e(this.getClass().getName(), "Error: Get data failed");
                         }
