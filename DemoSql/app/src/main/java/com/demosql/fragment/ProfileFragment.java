@@ -1,5 +1,6 @@
 package com.demosql.fragment;
 
+import android.app.Dialog;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -7,10 +8,18 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+
+import com.bumptech.glide.Glide;
+import com.demosql.R;
 import com.demosql.databinding.ProfileLayoutBinding;
 import com.demosql.model.response.UserDetailResponse;
 import com.demosql.presenter.ProfilePresenter;
 import com.demosql.view.ProfileView;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class ProfileFragment extends Fragment implements ProfileView {
     private ProfilePresenter presenter;
@@ -35,9 +44,22 @@ public class ProfileFragment extends Fragment implements ProfileView {
 
     @Override
     public void showUserProfile(UserDetailResponse userDetail) {
+        Glide.with(this)
+                .load(userDetail.getImgUrl())
+                .into(binding.avatar);
         binding.userName.setText(userDetail.getUserName());
         binding.userEmail.setText(userDetail.getEmail());
-        binding.userPhone.setText(userDetail.getPhoneNumber());
-        binding.userAddress.setText(userDetail.getAddress());
+        binding.phone.setText(userDetail.getPhoneNumber());
+        binding.address.setText(userDetail.getAddress());
+        String dobString = userDetail.getDob();
+        SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+        SimpleDateFormat outputFormat = new SimpleDateFormat("yyyy-MM-dd");
+        try {
+            Date date = inputFormat.parse(dobString);
+            String formattedDate = outputFormat.format(date);
+            binding.dateOfBirth.setText(formattedDate);
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
