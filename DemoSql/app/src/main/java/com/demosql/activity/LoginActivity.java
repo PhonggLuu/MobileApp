@@ -55,9 +55,15 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
 
     @Override
     public void navigateToMainAndProfile(UserDetailResponse profileResponse) {
-
         Intent intent = new Intent(this, MainActivity.class);
         intent.putExtra("USER_DETAIL", profileResponse); // Truyền dữ liệu UserDetail
+        startActivity(intent);
+        finish();
+    }
+
+    @Override
+    public void navigateToMain() {
+        Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
         finish();
     }

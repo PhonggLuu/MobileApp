@@ -1,7 +1,9 @@
 package com.demosql.network;
 
+import com.demosql.model.entities.Shirt;
 import com.demosql.model.request.UserLogin;
 import com.demosql.model.response.ApiResponse;
+import com.demosql.model.response.PagingShirt;
 import com.demosql.model.response.UserDetailResponse;
 import com.demosql.model.response.UserResponse;
 
@@ -19,4 +21,6 @@ public interface ApiService {
     @GET("user/current-user")
     Call<ApiResponse<UserDetailResponse>> getCurrentUser(@Header("Authorization") String token);
 
+    @POST("shirt/getall")
+    Call<ApiResponse<PagingShirt>> getShirtList(@Header("Authorization") String token);
 }
