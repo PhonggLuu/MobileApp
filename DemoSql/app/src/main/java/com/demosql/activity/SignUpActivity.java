@@ -1,4 +1,4 @@
-package com.demosql.view;
+package com.demosql.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.demosql.databinding.SignupLayoutBinding;
 import com.demosql.presenter.SignUpPresenter;
+import com.demosql.view.SignUpView;
 
 public class SignUpActivity extends AppCompatActivity implements SignUpView {
 
@@ -34,7 +35,7 @@ public class SignUpActivity extends AppCompatActivity implements SignUpView {
         binding.buttonRelogin.setOnClickListener(view -> {
             Intent intent = new Intent(this, LoginActivity.class);
             startActivity(intent);
-            finish(); // Close the sign-up screen
+            finish();
         });
     }
 

@@ -1,4 +1,4 @@
-package com.demosql.view;
+package com.demosql.activity;
 
 import android.os.Bundle;
 
@@ -12,6 +12,6 @@ public class WelcomeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.welcome_layout); // Ensure you have the welcome_layout XML
+        setContentView(R.layout.welcome_layout);
     }
 }

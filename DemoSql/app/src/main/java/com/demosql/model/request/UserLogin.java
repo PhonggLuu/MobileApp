@@ -1,4 +1,4 @@
-package com.demosql.model.dto;
+package com.demosql.model.request;
 
 public class UserLogin {
     public String email;
@@ -9,7 +9,6 @@ public class UserLogin {
         this.password = password;
     }
 
-    // Getter và Setter
     public String getEmail() {
         return email;
     }

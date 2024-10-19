@@ -1,6 +1,5 @@
 package com.demosql.model.response;
 
-import java.util.UUID;
 import com.google.gson.annotations.SerializedName;
 
 public class UserResponse {
@@ -11,8 +10,8 @@ public class UserResponse {
         return token;
     }
 
-    public void setToken(String token) {
-        this.token = token;
+    public void setToken(String newToken) {
+        token = newToken;
     }
 }
 
