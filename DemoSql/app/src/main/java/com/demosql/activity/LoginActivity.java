@@ -1,4 +1,4 @@
-package com.demosql.view;
+package com.demosql.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,7 +11,9 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.demosql.databinding.SigninLayoutBinding;
+import com.demosql.model.response.UserDetailResponse;
 import com.demosql.presenter.LoginPresenter;
+import com.demosql.view.LoginView;
 
 public class LoginActivity extends AppCompatActivity implements LoginView {
     private SigninLayoutBinding binding;
@@ -52,10 +54,12 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
     }
 
     @Override
-    public void navigateToWelcome() {
-        Intent intent = new Intent(this, WelcomeActivity.class);
+    public void navigateToMainAndProfile(UserDetailResponse profileResponse) {
+
+        Intent intent = new Intent(this, MainActivity.class);
+        intent.putExtra("USER_DETAIL", profileResponse); // Truyền dữ liệu UserDetail
         startActivity(intent);
-        finish();  // Optional: finish the LoginActivity if you don’t want to return to it
+        finish();
     }
 
     @Override
@@ -66,7 +70,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
     @Override
     public void showLoginSuccess() {
         Toast.makeText(this, "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
-        Intent intent = new Intent(this, WelcomeActivity.class);
+        //Intent intent = new Intent(this, WelcomeActivity.class);
     }
 
     @Override

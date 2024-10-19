@@ -13,4 +13,6 @@
     <color name="colorAccent">#03DAC5</color>
     <color name="textcolorHint">#546E7A</color>
 
+    <color name="color_orange">#FFB000</color>
+
 </resources>

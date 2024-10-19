@@ -2,11 +2,12 @@ package com.demosql.presenter;
 
 import android.util.Log;
 
-//import com.demosql.model.DatabaseManager;
 import androidx.annotation.NonNull;
 
-import com.demosql.model.dto.UserLogin;
+import com.demosql.model.entities.User;
+import com.demosql.model.request.UserLogin;
 import com.demosql.model.response.ApiResponse;
+import com.demosql.model.response.UserDetailResponse;
 import com.demosql.model.response.UserResponse;
 import com.demosql.network.ApiClient;
 import com.demosql.network.ApiService;
@@ -18,14 +19,10 @@ import retrofit2.Response;
 
 public class LoginPresenter {
     private final LoginView view;
-    //private final DatabaseManager databaseManager;
-    //private final ExecutorService executorService;
     private final ApiService apiService;
 
     public LoginPresenter(LoginView view) {
         this.view = view;
-        //this.databaseManager = new DatabaseManager();
-        //this.executorService = Executors.newSingleThreadExecutor();
         this.apiService = ApiClient.getInstance().getApiService();
     }
 
@@ -38,15 +35,38 @@ public class LoginPresenter {
                 @Override
                 public void onResponse(@NonNull Call<ApiResponse<UserResponse>> call, @NonNull Response<ApiResponse<UserResponse>> response) {
                     if (response.isSuccessful()) {
-                        UserResponse userResponse = response.body().getData();
+                        ApiResponse<UserResponse> apiResponse = response.body();
+                        UserResponse userResponse = apiResponse.getData();
                         if (userResponse != null) {
-                            // Xử lý phản hồi thành công
-                            String token = response.body().getData().getToken();
-                            userResponse.setToken(token);
+                            String token = userResponse.getToken();
+                            User.setToken(token);
+                            Log.d("Token", token);
                             view.showLoginSuccess();
-                            view.navigateToWelcome();
+                            //view.navigateToWelcome();
+                            // Gọi API để lấy hồ sơ người dùng
+                            apiService.getCurrentUser("Bearer " + token).enqueue(new Callback<ApiResponse<UserDetailResponse>>() {
+                                @Override
+                                public void onResponse(@NonNull Call<ApiResponse<UserDetailResponse>> call, @NonNull Response<ApiResponse<UserDetailResponse>> response) {
+                                    if (response.isSuccessful()) {
+                                        UserDetailResponse profileResponse = response.body().getData();
+                                        if (profileResponse != null) {
+                                            view.navigateToMainAndProfile(profileResponse);
+                                        } else {
+                                            Log.e(this.getClass().getName(), "Error: Get profile data failed");
+                                        }
+                                    } else {
+                                        Log.e(this.getClass().getName(), "Error: " + response.message());
+                                    }
+                                }
+
+                                @Override
+                                public void onFailure(@NonNull Call<ApiResponse<UserDetailResponse>> call, @NonNull Throwable t) {
+                                    Log.e("LoginPresenter", "Error: " + t.getMessage());
+                                    view.showLoginError("Error: " + t.getMessage());
+                                }
+                            });
                         } else {
-                            view.showLoginFailed();
+                            Log.e(this.getClass().getName(), "Error: Get data failed");
                         }
                     } else {
                         view.showLoginFailed();
@@ -55,27 +75,10 @@ public class LoginPresenter {
 
                 @Override
                 public void onFailure(@NonNull Call<ApiResponse<UserResponse>> call, @NonNull Throwable t) {
+                    Log.e("LoginPresenter", "Error: " + t.getMessage());
                     view.showLoginError("Error: " + t.getMessage());
                 }
             });
-            /*Log.d("LoginPresenter", "Attempting login with email: " + email);
-            executorService.execute(() -> {
-                try {
-                    boolean success = databaseManager.login(email, password);
-                    //Sử dụng Handler để chuyển tiếp về luồng chính
-                    new Handler(Looper.getMainLooper()).post(() -> {
-                        if(success) {
-                            view.showLoginSuccess();
-                            view.navigateToWelcome();
-                        } else {
-                            view.showLoginFailed();
-                        }
-                    });
-                } catch (Exception e) {
-                    Log.d("LoginPresenter", "Attempting login with email: " + email);
-                    new Handler(Looper.getMainLooper()).post(() -> view.showLoginError("Có lỗi xảy ra khi đăng nhập. Vui lòng thử lại."));
-                }
-            });*/
         }
     }
 }
