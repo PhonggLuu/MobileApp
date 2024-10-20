@@ -31,5 +31,4 @@ public interface ApiService {
     Call<ApiResponse<ApiResponse<Cart>>> getMyCart(@Header("Authorization") String token);
 
     @POST("user")
-    Call<ApiResponse<UserSignUpResponse>> register(@Body UserSignUp userSignUp);
-}
+    Call<ApiResponse<UserSignUpResponse>> register(@Body UserSignUp userSignUp);}
