@@ -5,4 +5,5 @@ public interface SignUpView {
     void showSignUpSuccess();
     void showSignUpFailed();
     void showUserExistError();
+    void navigateToLogin();
 }

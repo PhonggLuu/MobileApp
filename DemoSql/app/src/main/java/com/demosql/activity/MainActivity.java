@@ -23,11 +23,10 @@ public class MainActivity extends AppCompatActivity implements MainView {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        presenter = new MainPresenter(this);
+        //presenter = new MainPresenter(this);
         loadFragment(new ProductFragment());
         setActiveButton(binding.productsBtn);
         setupBottomNavigation();
