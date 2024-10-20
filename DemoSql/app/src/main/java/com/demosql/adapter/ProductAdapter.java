@@ -2,6 +2,7 @@ package com.demosql.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -32,6 +33,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
     @Override
     public void onBindViewHolder(@NonNull ProductViewHolder holder, int position) {
         Shirt product = productList.get(position);
+        holder.binding.card.setId(View.generateViewId());
 
         Glide.with(holder.itemView.getContext())
                 .load(product.getUrlImg())

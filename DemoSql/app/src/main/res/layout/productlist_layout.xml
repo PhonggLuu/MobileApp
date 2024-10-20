@@ -7,15 +7,39 @@
     android:layout_height="match_parent"
     android:layout_marginTop="@dimen/size_10">
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_margin="@dimen/size_10">
+        <EditText
+            android:id="@+id/searchEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/search_bg"
+            android:textSize="@dimen/text_size20"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_margin="@dimen/size_10"
+            android:padding="@dimen/size_10"
+            android:paddingStart="@dimen/size_20"
+            android:hint="Searching Here"
+            android:fontFamily="cursive"
+            android:drawableRight="@drawable/ic_baseline_search_24"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/productRecyclerView"
         android:layout_width="match_parent"
         android:layout_margin="@dimen/size_10"
         android:layout_height="0dp"
         android:layout_marginTop="@dimen/size_16"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/search"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:listitem="@layout/product" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
