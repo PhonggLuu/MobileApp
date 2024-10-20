@@ -60,6 +60,18 @@
                     android:layout_marginEnd="@dimen/size_10"
                     android:textSize="@dimen/text_size12"/>
             </LinearLayout>
+
+            <TextView
+                android:id="@+id/editProfile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Thêm vào giỏ hàng"
+                android:padding="@dimen/size_10"
+                android:textSize="@dimen/text_size14"
+                android:textAlignment="center"
+                android:background="@drawable/btn_orange"
+                android:clickable="true"/>
+
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 </GridLayout>

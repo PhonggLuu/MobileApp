@@ -66,4 +66,11 @@ public class SignUpActivity extends AppCompatActivity implements SignUpView {
     public void showUserExistError() {
         Toast.makeText(this, "User already exists. Please choose another username.", Toast.LENGTH_SHORT).show();
     }
+
+    @Override
+    public void navigateToLogin() {
+        Intent intent = new Intent(this, LoginActivity.class);
+        startActivity(intent);
+        finish();
+    }
 }
