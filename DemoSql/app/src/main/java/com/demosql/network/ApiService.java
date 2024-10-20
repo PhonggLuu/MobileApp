@@ -2,10 +2,12 @@ package com.demosql.network;
 
 import com.demosql.model.entities.Shirt;
 import com.demosql.model.request.UserLogin;
+import com.demosql.model.request.UserSignUp;
 import com.demosql.model.response.ApiResponse;
 import com.demosql.model.response.PagingShirt;
 import com.demosql.model.response.UserDetailResponse;
 import com.demosql.model.response.UserResponse;
+import com.demosql.model.response.UserSignUpResponse;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -23,4 +25,7 @@ public interface ApiService {
 
     @POST("shirt/getall")
     Call<ApiResponse<PagingShirt>> getShirtList(@Header("Authorization") String token);
+
+    @POST("user")
+    Call<ApiResponse<UserSignUpResponse>> register(@Body UserSignUp userSignUp);
 }

@@ -31,6 +31,7 @@ public class LoginPresenter {
             view.showEmptyFieldsError();
         } else {
             UserLogin userLogin = new UserLogin("luuhiep16092002@gmail.com", "Luuhiep113@");
+            //UserLogin userLogin = new UserLogin(email, password);
             apiService.login(userLogin).enqueue(new Callback<ApiResponse<UserResponse>>() {
                 @Override
                 public void onResponse(@NonNull Call<ApiResponse<UserResponse>> call, @NonNull Response<ApiResponse<UserResponse>> response) {
