@@ -1,5 +1,6 @@
 package com.demosql.network;
 
+import com.demosql.model.entities.Cart;
 import com.demosql.model.entities.Shirt;
 import com.demosql.model.request.UserLogin;
 import com.demosql.model.response.ApiResponse;
@@ -23,4 +24,7 @@ public interface ApiService {
 
     @POST("shirt/getall")
     Call<ApiResponse<PagingShirt>> getShirtList(@Header("Authorization") String token);
+
+    @GET("order/cart")
+    Call<ApiResponse<ApiResponse<Cart>>> getMyCart(@Header("Authorization") String token);
 }
