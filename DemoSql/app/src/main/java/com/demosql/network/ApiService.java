@@ -27,11 +27,9 @@ public interface ApiService {
     @POST("shirt/getall")
     Call<ApiResponse<PagingShirt>> getShirtList(@Header("Authorization") String token);
 
-<<<<<<< HEAD
     @GET("order/cart")
     Call<ApiResponse<ApiResponse<Cart>>> getMyCart(@Header("Authorization") String token);
-=======
+
     @POST("user")
     Call<ApiResponse<UserSignUpResponse>> register(@Body UserSignUp userSignUp);
->>>>>>> remotes/origin/main
 }
