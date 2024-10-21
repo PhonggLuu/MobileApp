@@ -59,18 +59,21 @@
                     android:textAlignment="textEnd"
                     android:layout_marginEnd="@dimen/size_10"
                     android:textSize="@dimen/text_size12"/>
-            </LinearLayout>
 
-            <TextView
-                android:id="@+id/editProfile"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Thêm vào giỏ hàng"
-                android:padding="@dimen/size_10"
-                android:textSize="@dimen/text_size14"
-                android:textAlignment="center"
-                android:background="@drawable/btn_orange"
-                android:clickable="true"/>
+                <ImageView
+                    android:id="@+id/addtocartBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/size_5"
+                    android:background="@drawable/border_orange"
+                    android:padding="6dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/detailPrice"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/detailPrice"
+                    app:srcCompat="@drawable/add_cart"
+                    android:layout_gravity="center"
+                    android:clickable="true"/>
+            </LinearLayout>
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>
