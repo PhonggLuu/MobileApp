@@ -11,11 +11,11 @@ public class Cart {
     private boolean refundStatus;
     private int status;
     private String id; // UUID của đơn hàng
-    private List<CartDetails> cartDetails; // Danh sách chi tiết sản phẩm
+    private List<CartDetails> orderDetails; // Danh sách chi tiết sản phẩm
 
     // Getter và Setter cho các thuộc tính
 
-    public Cart(int userId, double totalPrice, Double shipPrice, Double deposit, String date, boolean refundStatus, int status, String id, List<CartDetails> cartDetails) {
+    public Cart(int userId, double totalPrice, Double shipPrice, Double deposit, String date, boolean refundStatus, int status, String id, List<CartDetails> orderDetails) {
         this.userId = userId;
         this.totalPrice = totalPrice;
         this.shipPrice = shipPrice;
@@ -24,7 +24,7 @@ public class Cart {
         this.refundStatus = refundStatus;
         this.status = status;
         this.id = id;
-        this.cartDetails = cartDetails;
+        this.orderDetails = orderDetails;
     }
 
     public Cart() {
@@ -95,10 +95,10 @@ public class Cart {
     }
 
     public List<CartDetails> getOrderDetails() {
-        return cartDetails;
+        return orderDetails;
     }
 
     public void setOrderDetails(List<CartDetails> orderDetails) {
-        this.cartDetails = orderDetails;
+        this.orderDetails = orderDetails;
     }
 }

@@ -31,7 +31,7 @@
         app:shapeAppearanceOverlay="@style/roundedImage1"/>
 
     <TextView
-        android:id="@+id/titleMethod"
+        android:id="@+id/itemName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -46,7 +46,6 @@
         app:layout_constraintTop_toTopOf="@+id/pic" />
 
     <TextView
-        android:id="@+id/textView13"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
@@ -54,13 +53,13 @@
         android:textSize="18sp"
         android:textStyle="bold"
         android:textColor="#F44336"
-        app:layout_constraintBottom_toBottomOf="@+id/price"
-        app:layout_constraintStart_toEndOf="@+id/price"
-        app:layout_constraintTop_toTopOf="@+id/price" />
+        app:layout_constraintBottom_toBottomOf="@+id/itemPrice"
+        app:layout_constraintStart_toEndOf="@+id/itemPrice"
+        app:layout_constraintTop_toTopOf="@+id/itemPrice" />
 
 
     <TextView
-        android:id="@+id/price"
+        android:id="@+id/itemPrice"
         android:layout_width="wrap_content"
         android:layout_height="24dp"
         android:layout_marginTop="7dp"
@@ -69,13 +68,13 @@
         android:textSize="18sp"
         android:textStyle="bold"
         android:textColor="#F44336"
-        app:layout_constraintEnd_toEndOf="@+id/titleMethod"
+        app:layout_constraintEnd_toEndOf="@+id/itemName"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/titleMethod"
-        app:layout_constraintTop_toBottomOf="@+id/titleMethod" />
+        app:layout_constraintStart_toStartOf="@+id/itemName"
+        app:layout_constraintTop_toBottomOf="@+id/itemName" />
 
     <ImageView
-        android:id="@+id/minusBtn"
+        android:id="@+id/removeFromCart"
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_marginEnd="7dp"
@@ -84,16 +83,16 @@
         android:padding="5dp"
         android:scaleType="centerCrop"
         app:circularflow_radiusInDP="20dp"
-        app:layout_constraintBottom_toBottomOf="@+id/textViewQuantity"
-        app:layout_constraintEnd_toStartOf="@+id/textViewQuantity"
-        app:layout_constraintTop_toTopOf="@+id/textViewQuantity"
+        app:layout_constraintBottom_toBottomOf="@+id/itemQuantity"
+        app:layout_constraintEnd_toStartOf="@+id/itemQuantity"
+        app:layout_constraintTop_toTopOf="@+id/itemQuantity"
         app:shapeAppearanceOverlay="@style/roundedImage"
         app:srcCompat="@drawable/minus"
         app:tint="@color/white"
         tools:ignore="MissingConstraints" />
 
     <EditText
-        android:id="@+id/textViewQuantity"
+        android:id="@+id/itemQuantity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="7dp"
@@ -104,12 +103,12 @@
         android:paddingHorizontal="15dp"
         android:paddingVertical="10dp"
         android:text="1"
-        app:layout_constraintBottom_toBottomOf="@+id/plusBtn"
-        app:layout_constraintEnd_toStartOf="@+id/plusBtn"
-        app:layout_constraintTop_toTopOf="@+id/plusBtn" />
+        app:layout_constraintBottom_toBottomOf="@+id/addtocartBtn"
+        app:layout_constraintEnd_toStartOf="@+id/addtocartBtn"
+        app:layout_constraintTop_toTopOf="@+id/addtocartBtn" />
 
     <ImageView
-        android:id="@+id/plusBtn"
+        android:id="@+id/addtocartBtn"
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_marginTop="15dp"
@@ -120,7 +119,7 @@
         android:scaleType="centerCrop"
         app:circularflow_radiusInDP="20dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/price"
+        app:layout_constraintTop_toBottomOf="@+id/itemPrice"
         app:shapeAppearanceOverlay="@style/roundedImage"
         app:srcCompat="@drawable/plus"
         app:tint="@color/white" />
