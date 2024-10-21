@@ -41,5 +41,6 @@
         <activity
             android:name=".activity.MainActivity"
             android:exported="true" />
+        <activity android:name=".activity.CheckoutActivity" />
     </application>
 </manifest>
