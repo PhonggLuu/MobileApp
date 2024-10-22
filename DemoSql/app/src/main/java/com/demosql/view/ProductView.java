@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface ProductView {
     void showProducts(List<Shirt> shirts);
+
 }
