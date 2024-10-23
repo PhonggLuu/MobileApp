@@ -1,6 +1,7 @@
 package com.demosql.presenter;
 
 import android.util.Log;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
@@ -27,7 +28,7 @@ public class SignUpPresenter {
         this.apiService = ApiClient.getInstance().getApiService();
     }
 
-    public void handleSignUp(String email, String password, String confirmPassword) {
+    public void handleSignUp(String email, String password, String confirmPassword, String fullName, String phoneNumber) {
         if (email.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
             view.showEmptyFieldsError();
             return;
@@ -38,13 +39,14 @@ public class SignUpPresenter {
             return;
         }
 
-        UserSignUp userSignUp = new UserSignUp(email, password, email);
+        UserSignUp userSignUp = new UserSignUp(email, password, fullName, phoneNumber);
         apiService.register(userSignUp).enqueue(new Callback<ApiResponse<UserSignUpResponse>>() {
             @Override
             public void onResponse(@NonNull Call<ApiResponse<UserSignUpResponse>> call, @NonNull Response<ApiResponse<UserSignUpResponse>> response) {
                 if (response.isSuccessful()) {
                     ApiResponse<UserSignUpResponse> apiResponse = response.body();
-                    if (apiResponse != null) {
+                    UserSignUpResponse userSignUpResponse = apiResponse.getData();
+                    if (userSignUpResponse != null) {
                         view.showSignUpSuccess();
                         view.navigateToLogin();
                     } else {

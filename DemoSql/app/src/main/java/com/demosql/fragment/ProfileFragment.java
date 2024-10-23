@@ -36,8 +36,9 @@ public class ProfileFragment extends Fragment implements ProfileView {
         presenter = new ProfilePresenter(this);
         presenter.loadProfile(); // Load user details
 
-        binding.editProfile.setOnClickListener(v -> {
+        binding.btnLogOut.setOnClickListener(v -> {
             //Intent intent = new Intent(getActivity(), EditProfileActivity.class);
+
         });
         return view;
     }

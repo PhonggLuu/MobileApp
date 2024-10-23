@@ -17,7 +17,6 @@ import com.demosql.databinding.ProductlistLayoutBinding;
 import com.demosql.model.entities.CartDetails;
 import com.demosql.model.entities.Shirt;
 import com.demosql.model.request.RemoveItemInCartRequest;
-import com.demosql.model.request.SearchProduct;
 import com.demosql.model.request.ShirtRequest;
 import com.demosql.model.request.UpdateCartRequest;
 import com.demosql.presenter.CartPresenter;
@@ -88,7 +87,7 @@ public class ProductFragment extends Fragment implements ProductView, CartView {
 
     @Override
     public void showCart(List<CartDetails> cartDetails) {
-        Log.d(this.getClass().getName(), "Show Cart");
+
     }
 
     @Override
@@ -100,5 +99,4 @@ public class ProductFragment extends Fragment implements ProductView, CartView {
     public void removeItemFromCart(RemoveItemInCartRequest request) {
 
     }
-
 }

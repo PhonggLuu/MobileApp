@@ -26,10 +26,12 @@ public class SignUpActivity extends AppCompatActivity implements SignUpView {
         presenter = new SignUpPresenter(this);
 
         binding.signup.setOnClickListener(view -> {
-            String username = binding.logUsername.getText().toString();
+            String email = binding.logEmail.getText().toString();
             String password = binding.logPassword.getText().toString();
             String confirmPassword = binding.logRepassword.getText().toString();
-            presenter.handleSignUp(username, password, confirmPassword);
+            String fullName = binding.logFullname.getText().toString();
+            String phoneNumber = binding.logPhoneNumber.getText().toString();
+            presenter.handleSignUp(email, password, confirmPassword, fullName, phoneNumber);
         });
 
         binding.buttonRelogin.setOnClickListener(view -> {
@@ -41,14 +43,20 @@ public class SignUpActivity extends AppCompatActivity implements SignUpView {
 
     @Override
     public void showEmptyFieldsError() {
-        if (binding.logUsername.getText().toString().isEmpty()) {
-            binding.logUsername.setError("Please enter a username");
+        if (binding.logEmail.getText().toString().isEmpty()) {
+            binding.logEmail.setError("Please enter a email");
         }
         if (binding.logPassword.getText().toString().isEmpty()) {
             binding.logPassword.setError("Please enter a password");
         }
         if (binding.logRepassword.getText().toString().isEmpty()) {
             binding.logRepassword.setError("Please confirm your password");
+        }
+        if (binding.logFullname.getText().toString().isEmpty()) {
+            binding.logFullname.setError("Please enter your name");
+        }
+        if (binding.logPhoneNumber.getText().toString().isEmpty()) {
+            binding.logPhoneNumber.setError("Please enter your phone number");
         }
     }
 

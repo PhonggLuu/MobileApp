@@ -21,17 +21,17 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
     private List<CartDetails> cartDetailsList;
     private Context context;
     private CartView view;
-    private OnCheckoutClickListener listener;
+    //private OnCheckoutClickListener listener;
 
     /*public void setOnCheckoutClickListener(OnCheckoutClickListener listener) {
         this.listener = listener;
     }*/
 
-    public CartAdapter( Context context, List<CartDetails> cartDetailsList, CartView view, OnCheckoutClickListener listener) {
+    public CartAdapter( Context context, List<CartDetails> cartDetailsList, CartView view) {
         this.cartDetailsList = cartDetailsList;
         this.context = context;
         this.view = view;
-        this.listener = listener;
+        //this.listener = listener;
     }
 
     @NonNull
@@ -47,11 +47,11 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
         CartDetails item = cartDetailsList.get(position);
 
         //listener.onCheckoutClick(String.valueOf(item.getOrderId()));
-        holder.cartLayoutBinding.checkoutBtn.setOnClickListener(v -> {
-            if(listener != null) {
-                listener.onCheckoutClick(String.valueOf(item.getOrderId()));
-            }
-        });
+//        holder.cartLayoutBinding.checkoutBtn.setOnClickListener(v -> {
+//            if(listener != null) {
+//                listener.onCheckoutClick(String.valueOf(item.getOrderId()));
+//            }
+//        });
 
         Glide.with(holder.itemView.getContext())
                 .load(item.getShirtUrlImg())
@@ -103,7 +103,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
         }
     }
 
-    public interface OnCheckoutClickListener {
+    /*public interface OnCheckoutClickListener {
         void onCheckoutClick(String orderId);
-    }
+    }*/
 }

@@ -22,7 +22,7 @@ import com.demosql.view.CartView;
 
 import java.util.List;
 
-public class CartFragment extends Fragment implements CartView, CartAdapter.OnCheckoutClickListener {
+public class CartFragment extends Fragment implements CartView/*, CartAdapter.OnCheckoutClickListener*/ {
     private CartAdapter  cartAdapter;
     private CartPresenter presenter;
     private CartLayoutBinding binding;
@@ -74,7 +74,7 @@ public class CartFragment extends Fragment implements CartView, CartAdapter.OnCh
             return;
         }
         if (cartAdapter == null) {
-            cartAdapter = new CartAdapter(getContext(), cartDetailsList, this, this);
+            cartAdapter = new CartAdapter(getContext(), cartDetailsList, this);
             binding.recyclerViewCart.setAdapter(cartAdapter);
             updateTotal(cartDetailsList);
         } else {
@@ -112,10 +112,10 @@ public class CartFragment extends Fragment implements CartView, CartAdapter.OnCh
         presenter.addToCart(shirt);
     }
 
-    @Override
+    /*@Override
     public void onCheckoutClick(String orderId) {
         Intent intent = new Intent(getActivity(), CheckoutActivity.class);
         intent.putExtra("ORDER_ID", orderId);
         startActivity(intent);
-    }
+    }*/
 }
