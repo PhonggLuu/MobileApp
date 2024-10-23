@@ -13,6 +13,7 @@ import com.demosql.model.response.AddToCartResponse;
 import com.demosql.model.response.ApiResponse;
 import com.demosql.model.response.CheckoutResponse;
 import com.demosql.model.response.PagingShirt;
+import com.demosql.model.response.ProductSearching;
 import com.demosql.model.response.ProductSearchingPaging;
 import com.demosql.model.response.UserDetailResponse;
 import com.demosql.model.response.UserResponse;
@@ -58,4 +59,7 @@ public interface ApiService {
 
     @DELETE("order/{id}")
     Call<ApiResponse<CheckoutResponse>> checkout(@Header("Authorization") String token, @Path("id") String id, @Query("status") int status);
+
+    @GET("shirt/{id}")
+    Call<ApiResponse<ProductSearching>> getShirtById(@Header("Authorization") String token, @Path("id") int id);
 }

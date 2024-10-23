@@ -10,10 +10,11 @@ public class UserSignUp {
     private String gender;
     private String imgUrl;
 
-    public UserSignUp(String email, String password, String userName) {
+    public UserSignUp(String email, String password, String userName, String phoneNumber) {
         this.email = email;
         this.password = password;
         this.userName = userName;
+        this.phoneNumber = phoneNumber;
     }
 
     public String getEmail() {

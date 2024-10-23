@@ -315,17 +315,20 @@
                 android:layout_height="@dimen/text_size2"
                 android:layout_margin="@dimen/size_10"
                 android:background="#d9d9d9"/>
-            <TextView
-                android:id="@+id/editProfile"
+            <Button
+                android:id="@+id/btnLogOut"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Edit Profile"
-                android:padding="@dimen/size_10"
+                android:text="Log Out"
+                android:paddingStart="@dimen/size_20"
                 android:layout_margin="@dimen/size_10"
                 android:textSize="@dimen/text_size20"
                 android:textAlignment="center"
-                android:background="@drawable/btn_orange"
-                android:clickable="true"
+                android:backgroundTint="#EB8D21"
+                android:drawableTint="@color/black"
+                android:textColor="#fff"
+                app:icon="@drawable/exits"
+                app:iconTint="#fff"
                 />
         </LinearLayout>
     </LinearLayout>
