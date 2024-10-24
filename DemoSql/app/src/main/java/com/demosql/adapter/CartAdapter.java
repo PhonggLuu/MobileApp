@@ -57,7 +57,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
                 .load(item.getShirtUrlImg())
                 .into(holder.binding.pic);
         holder.binding.itemName.setText(item.getShirtName());
-        holder.binding.itemPrice.setText(String.valueOf(item.getPrice()));
+        holder.binding.itemPrice.setText(String.valueOf("$" + item.getPrice()));
         holder.binding.itemQuantity.setText(String.valueOf(item.getQuantity()));
         holder.binding.remove.setOnClickListener(v -> {
             RemoveItemInCartRequest request = new RemoveItemInCartRequest(item.getOrderId(), item.getShirtSizeId());

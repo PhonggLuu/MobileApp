@@ -16,6 +16,7 @@ public class ProductSearching {
     private String clubName;
     private String clubEstablishedYear;
     private String clubLogo;
+    private String clubCountry;
     private String name;
     private int number;
     private double price;

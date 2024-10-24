@@ -21,6 +21,7 @@ import com.demosql.activity.ProductDetailActivity;
 import com.demosql.databinding.ProductBinding;
 import com.demosql.fragment.CartFragment;
 import com.demosql.fragment.ProductDetailFragment;
+import com.demosql.model.entities.CartDetails;
 import com.demosql.model.entities.Shirt;
 import com.demosql.model.entities.ShirtSize;
 import com.demosql.model.request.ShirtRequest;
@@ -64,11 +65,11 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
             /*if(product.getListSize().size() == 0) {
                 Toast.makeText(this.context, "Sản phẩm hiện đang hết hàng", Toast.LENGTH_SHORT).show();
                 return;
-            }
+            }*/
             if(product.getListSize().get(0).getQuantity() <= 0) {
                 Toast.makeText(this.context, "Sản phẩm hiện đang hết hàng", Toast.LENGTH_SHORT).show();
                 return;
-            }*/
+            }
             ShirtRequest request = new ShirtRequest(product.getId(), product.getListSize().get(0).getSizeId(), 1);
             view.addToCart(request);
         });
@@ -101,5 +102,11 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
             super(binding.getRoot());
             this.binding = binding;
         }
+    }
+
+    public void updateCartDetails(List<Shirt> newShirtsList) {
+        this.productList.clear();
+        this.productList.addAll(newShirtsList);
+        notifyDataSetChanged();
     }
 }

@@ -17,6 +17,7 @@ import com.demosql.databinding.ProductlistLayoutBinding;
 import com.demosql.model.entities.CartDetails;
 import com.demosql.model.entities.Shirt;
 import com.demosql.model.request.RemoveItemInCartRequest;
+import com.demosql.model.request.SearchProduct;
 import com.demosql.model.request.ShirtRequest;
 import com.demosql.model.request.UpdateCartRequest;
 import com.demosql.presenter.CartPresenter;
@@ -52,9 +53,12 @@ public class ProductFragment extends Fragment implements ProductView, CartView {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                String query = s.toString();
-                //SearchProduct request = new SearchProduct(1, 100, query, 1);
-                //presenter.searchingProduct(request);
+                try {
+                    String query = s.toString();
+                    presenter.searchingProduct(new SearchProduct(query));
+                } catch (Exception e) {
+                    Log.e("SearchError", "Error while searching products", e);
+                }
             }
 
             @Override
@@ -76,7 +80,7 @@ public class ProductFragment extends Fragment implements ProductView, CartView {
             binding.productRecyclerView.setAdapter(productAdapter);
         } else {
             // Notify the adapter about data changes (e.g., if data has been updated)
-            productAdapter.notifyDataSetChanged();
+            productAdapter.updateCartDetails(shirts);
         }
     }
 

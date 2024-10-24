@@ -48,21 +48,20 @@ public class ProductPresenter {
 
             @Override
             public void onFailure(Call<ApiResponse<PagingShirt>> call, Throwable throwable) {
-                Log.e(this.getClass().getName(), "Get produc failed");
+                Log.e(this.getClass().getName(), "Get product failed");
             }
         });
     }
 
-    /*public void searchingProduct(SearchProduct query) {
-        apiService.searchProduct("Bearer " + User.getToken(), query).enqueue(new Callback<ApiResponse<ProductSearchingPaging>>() {
+    public void searchingProduct(SearchProduct req) {
+        apiService.searchProduct("Bearer " + User.getToken(), req).enqueue(new Callback<ApiResponse<ProductSearchingPaging>>() {
             @Override
             public void onResponse(Call<ApiResponse<ProductSearchingPaging>> call, Response<ApiResponse<ProductSearchingPaging>> response) {
                 if (response.isSuccessful()) {
-                    ProductSearchingPaging paging = response.body().getData();
-                    List<ProductSearching> products = paging.getPageData();
-                    if (products != null) {
-                        Log.e("ProductPresenter", view +"");
-                        //view.showProducts(products);
+                    ProductSearchingPaging pagingShirt  = response.body().getData();
+                    List<Shirt> shirts = pagingShirt.getPageData();
+                    if (shirts != null) {
+                        view.showProducts(shirts);
                     } else {
                         Log.e(this.getClass().getName(), "Error: Get profile data failed");
                     }
@@ -73,8 +72,8 @@ public class ProductPresenter {
 
             @Override
             public void onFailure(Call<ApiResponse<ProductSearchingPaging>> call, Throwable throwable) {
-                Log.e(this.getClass().getName(), "Get produc failed");
+                Log.e(this.getClass().getName(), "Error: " + throwable.getMessage());
             }
         });
-    }*/
+    }
 }

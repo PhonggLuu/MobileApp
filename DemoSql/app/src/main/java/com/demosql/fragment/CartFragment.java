@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -83,9 +84,14 @@ public class CartFragment extends Fragment implements CartView/*, CartAdapter.On
         }
         binding.checkoutBtn.setOnClickListener(v -> {
             //String orderId = binding.orderId.getText().toString();
-            Intent intent = new Intent(getActivity(), CheckoutActivity.class);
-            intent.putExtra("ORDER_ID", String.valueOf(cartDetailsList.get(0).getOrderId()));
-            startActivity(intent);
+            if(Integer.parseInt(binding.total.getText().toString()) > 0)
+            {
+                Intent intent = new Intent(getActivity(), CheckoutActivity.class);
+                intent.putExtra("ORDER_ID", String.valueOf(cartDetailsList.get(0).getOrderId()));
+                startActivity(intent);
+            } else {
+                Toast.makeText(getContext(), "Giỏ hàng trống", Toast.LENGTH_SHORT).show();
+            }
         });
     }
 
