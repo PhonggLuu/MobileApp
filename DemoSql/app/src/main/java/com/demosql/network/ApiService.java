@@ -52,7 +52,7 @@ public interface ApiService {
     Call<ApiResponse<Cart>> updateQuantity(@Header("Authorization") String token, @Body UpdateCartRequest request);
 
     @POST("shirt/getallbyname")
-    Call<ApiResponse<PagingShirt>> searchProduct(@Header("Authorization") String token, String query);
+    Call<ApiResponse<ProductSearchingPaging>> searchProduct(@Header("Authorization") String token, @Body SearchProduct request);
 
     @POST("order/deteleitemincart")
     Call<ApiResponse<Cart>> removeItemFromCart(@Header("Authorization") String token, @Body RemoveItemInCartRequest request);

@@ -1,5 +1,6 @@
 package com.demosql.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -11,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.ProgressBar;
 
 import com.bumptech.glide.Glide;
+import com.demosql.activity.LoginActivity;
 import com.demosql.databinding.ProfileLayoutBinding;
 import com.demosql.model.response.UserDetailResponse;
 import com.demosql.presenter.ProfilePresenter;
@@ -37,8 +39,9 @@ public class ProfileFragment extends Fragment implements ProfileView {
         presenter.loadProfile(); // Load user details
 
         binding.btnLogOut.setOnClickListener(v -> {
-            //Intent intent = new Intent(getActivity(), EditProfileActivity.class);
-
+            Intent intent = new Intent(getActivity(), LoginActivity.class);
+            startActivity(intent);
+            getActivity().finish();
         });
         return view;
     }
