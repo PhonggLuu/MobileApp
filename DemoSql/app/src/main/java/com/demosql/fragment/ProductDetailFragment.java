@@ -61,9 +61,28 @@ public class ProductDetailFragment extends Fragment implements ProductDetailView
             getActivity().finish();
         });
 
+        binding.minusProductBtn.setOnClickListener(v -> {
+            int countNumber = binding.numberProduct.getText().toString().isEmpty() ? 1 : Integer.parseInt(binding.numberProduct.getText().toString());
+            if (countNumber > 1) {
+                countNumber--;
+                binding.numberProduct.setText(String.valueOf(countNumber));
+                float total = countNumber * Float.parseFloat(binding.productPrice.getText().toString());
+                binding.sumPrice.setText(String.valueOf(total));
+            }
+        });
+        binding.addProductBtn.setOnClickListener(v -> {
+            int countNumber = Integer.parseInt(binding.numberProduct.getText().toString());
+            if (countNumber < Integer.parseInt(binding.maxQuantity.getText().toString())) {
+                countNumber++;
+                binding.numberProduct.setText(String.valueOf(countNumber));
+                float total = countNumber * Float.parseFloat(binding.productPrice.getText().toString());
+                binding.sumPrice.setText(String.valueOf(total));
+            }
+        });
         cartPresenter = new CartPresenter(getContext(), this);
         binding.addtocartBtn.setOnClickListener(v -> {
-            cartPresenter.addToCart(new ShirtRequest(productId, sizeId, 1));
+            int quantity = Integer.parseInt(binding.numberProduct.getText().toString());
+            cartPresenter.addToCart(new ShirtRequest(productId, sizeId, quantity));
         });
         return binding.getRoot();
     }
@@ -84,6 +103,8 @@ public class ProductDetailFragment extends Fragment implements ProductDetailView
         binding.clubName.setText(product.getClubName());
         binding.seasonName.setText(product.getSessionName());
         binding.description.setText(product.getDescription());
+        binding.sumPrice.setText(String.valueOf(product.getPrice()));
+        binding.maxQuantity.setText(String.valueOf(product.getListSize().get(0).getQuantity()));
     }
 
     @Override

@@ -27,10 +27,11 @@ public class LoginPresenter {
     }
 
     public void handleLogin(String email, String password) {
-        if(email.isEmpty() || password.isEmpty()) {
+        /*if(email.isEmpty() || password.isEmpty()) {
             view.showEmptyFieldsError();
-        } else {
-            UserLogin userLogin = new UserLogin("luuhiep16092002@gmail.com", "Luuhiep113@");
+        } else {*/
+            //UserLogin userLogin = new UserLogin("luuhiep16092002@gmail.com", "Luuhiep113@");
+            UserLogin userLogin = new UserLogin("luuphong016@gmail.com", "Phong9702@");
             //UserLogin userLogin = new UserLogin(email, password);
             apiService.login(userLogin).enqueue(new Callback<ApiResponse<UserResponse>>() {
                 @Override
@@ -80,6 +81,6 @@ public class LoginPresenter {
                     view.showLoginError("Error: " + t.getMessage());
                 }
             });
-        }
+        //}
     }
 }

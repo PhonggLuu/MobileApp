@@ -36,14 +36,15 @@ public interface ApiService {
     @GET("user/current-user")
     Call<ApiResponse<UserDetailResponse>> getCurrentUser(@Header("Authorization") String token);
 
+    @POST("user")
+    Call<ApiResponse<UserSignUpResponse>> register(@Body UserSignUp userSignUp);
+
+    // ======= Region: Customer Role =======
     @POST("shirt/getall")
     Call<ApiResponse<PagingShirt>> getShirtList(@Header("Authorization") String token);
 
     @GET("order/cart")
     Call<ApiResponse<Cart>> getMyCart(@Header("Authorization") String token);
-
-    @POST("user")
-    Call<ApiResponse<UserSignUpResponse>> register(@Body UserSignUp userSignUp);
 
     @POST("order/addtocart")
     Call<ApiResponse<Cart>> addToCart(@Header("Authorization") String token, @Body ShirtRequest shirt);
@@ -62,4 +63,5 @@ public interface ApiService {
 
     @GET("shirt/{id}")
     Call<ApiResponse<ProductSearching>> getShirtById(@Header("Authorization") String token, @Path("id") int id);
+    // ======= End Region =======
 }
