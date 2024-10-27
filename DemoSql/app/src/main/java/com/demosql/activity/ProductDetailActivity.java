@@ -30,11 +30,6 @@ public class ProductDetailActivity extends AppCompatActivity implements ProductD
     }
 
     @Override
-    public void showProductDetails(int productId) {
-        presenter.getProductDetails(productId);
-    }
-
-    @Override
     public void showProductDetailed(ProductSearching product) {
         Glide.with(this)
                 .load(product.getUrlImg())

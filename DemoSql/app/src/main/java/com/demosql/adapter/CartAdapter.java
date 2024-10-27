@@ -2,6 +2,7 @@ package com.demosql.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -38,8 +39,9 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
     @Override
     public CartAdapter.CartViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         ItemCartLayoutBinding binding = ItemCartLayoutBinding.inflate(LayoutInflater.from(context), parent, false);
-        CartLayoutBinding cartLayoutBinding = CartLayoutBinding.inflate(LayoutInflater.from(context), parent, false);
-        return new CartAdapter.CartViewHolder(binding, cartLayoutBinding);
+        //CartLayoutBinding cartLayoutBinding = CartLayoutBinding.inflate(LayoutInflater.from(context), parent, false);
+        //return new CartAdapter.CartViewHolder(binding, cartLayoutBinding);
+        return new CartAdapter.CartViewHolder(binding);
     }
 
     @Override
@@ -96,14 +98,15 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
         ItemCartLayoutBinding binding;
         CartLayoutBinding cartLayoutBinding;
 
+        public CartViewHolder(@NonNull ItemCartLayoutBinding binding) {
+            super(binding.getRoot());
+            this.binding = binding;
+        }
+
         public CartViewHolder(@NonNull ItemCartLayoutBinding binding, CartLayoutBinding cartLayoutBinding) {
             super(binding.getRoot());
             this.binding = binding;
             this.cartLayoutBinding = cartLayoutBinding;
         }
     }
-
-    /*public interface OnCheckoutClickListener {
-        void onCheckoutClick(String orderId);
-    }*/
 }

@@ -6,9 +6,7 @@ import com.demosql.model.entities.Shirt;
 import com.demosql.model.entities.User;
 import com.demosql.model.request.SearchProduct;
 import com.demosql.model.response.ApiResponse;
-import com.demosql.model.response.PagingShirt;
-import com.demosql.model.response.ProductSearching;
-import com.demosql.model.response.ProductSearchingPaging;
+import com.demosql.model.response.PagingSearchResponse;
 import com.demosql.network.ApiClient;
 import com.demosql.network.ApiService;
 import com.demosql.view.ProductView;
@@ -29,12 +27,12 @@ public class ProductPresenter {
     }
 
     public void loadProducts() {
-        apiService.getShirtList("Bearer " + User.getToken()).enqueue(new Callback<ApiResponse<PagingShirt>>() {
+        apiService.getShirtList("Bearer " + User.getToken()).enqueue(new Callback<ApiResponse<PagingSearchResponse<Shirt>>>() {
             @Override
-            public void onResponse(Call<ApiResponse<PagingShirt>> call, Response<ApiResponse<PagingShirt>> response) {
+            public void onResponse(Call<ApiResponse<PagingSearchResponse<Shirt>>> call, Response<ApiResponse<PagingSearchResponse<Shirt>>> response) {
                 if (response.isSuccessful()) {
-                    PagingShirt pagingShirt  = response.body().getData();
-                    List<Shirt> shirts = pagingShirt.getShirtList();
+                    PagingSearchResponse pagingShirt  = response.body().getData();
+                    List<Shirt> shirts = pagingShirt.getPageData();
                     if (shirts != null) {
                         Log.e("ProductPresenter", view +"");
                         view.showProducts(shirts);
@@ -47,18 +45,18 @@ public class ProductPresenter {
             }
 
             @Override
-            public void onFailure(Call<ApiResponse<PagingShirt>> call, Throwable throwable) {
+            public void onFailure(Call<ApiResponse<PagingSearchResponse<Shirt>>> call, Throwable throwable) {
                 Log.e(this.getClass().getName(), "Get product failed");
             }
         });
     }
 
     public void searchingProduct(SearchProduct req) {
-        apiService.searchProduct("Bearer " + User.getToken(), req).enqueue(new Callback<ApiResponse<ProductSearchingPaging>>() {
+        apiService.searchProduct("Bearer " + User.getToken(), req).enqueue(new Callback<ApiResponse<PagingSearchResponse<Shirt>>>() {
             @Override
-            public void onResponse(Call<ApiResponse<ProductSearchingPaging>> call, Response<ApiResponse<ProductSearchingPaging>> response) {
+            public void onResponse(Call<ApiResponse<PagingSearchResponse<Shirt>>> call, Response<ApiResponse<PagingSearchResponse<Shirt>>> response) {
                 if (response.isSuccessful()) {
-                    ProductSearchingPaging pagingShirt  = response.body().getData();
+                    PagingSearchResponse pagingShirt  = response.body().getData();
                     List<Shirt> shirts = pagingShirt.getPageData();
                     if (shirts != null) {
                         view.showProducts(shirts);
@@ -71,7 +69,7 @@ public class ProductPresenter {
             }
 
             @Override
-            public void onFailure(Call<ApiResponse<ProductSearchingPaging>> call, Throwable throwable) {
+            public void onFailure(Call<ApiResponse<PagingSearchResponse<Shirt>>> call, Throwable throwable) {
                 Log.e(this.getClass().getName(), "Error: " + throwable.getMessage());
             }
         });

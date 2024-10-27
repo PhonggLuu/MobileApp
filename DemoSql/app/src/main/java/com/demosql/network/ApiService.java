@@ -1,22 +1,22 @@
 package com.demosql.network;
 
 import com.demosql.model.entities.Cart;
-import com.demosql.model.entities.CartDetails;
+import com.demosql.model.entities.Order;
+import com.demosql.model.entities.OrderDetail;
 import com.demosql.model.entities.Shirt;
+import com.demosql.model.request.OrderSearchingRequest;
 import com.demosql.model.request.RemoveItemInCartRequest;
 import com.demosql.model.request.SearchProduct;
 import com.demosql.model.request.ShirtRequest;
 import com.demosql.model.request.UpdateCartRequest;
 import com.demosql.model.request.UserLogin;
 import com.demosql.model.request.UserSignUp;
-import com.demosql.model.response.AddToCartResponse;
 import com.demosql.model.response.ApiResponse;
 import com.demosql.model.response.CheckoutResponse;
-import com.demosql.model.response.PagingShirt;
+import com.demosql.model.response.PagingSearchResponse;
 import com.demosql.model.response.ProductSearching;
-import com.demosql.model.response.ProductSearchingPaging;
 import com.demosql.model.response.UserDetailResponse;
-import com.demosql.model.response.UserResponse;
+import com.demosql.model.response.UserLoginResponse;
 import com.demosql.model.response.UserSignUpResponse;
 
 import retrofit2.Call;
@@ -25,13 +25,12 @@ import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
-import retrofit2.http.PUT;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface ApiService {
     @POST("user/login")
-    Call<ApiResponse<UserResponse>> login(@Body UserLogin userLogin);
+    Call<ApiResponse<UserLoginResponse>> login(@Body UserLogin userLogin);
 
     @GET("user/current-user")
     Call<ApiResponse<UserDetailResponse>> getCurrentUser(@Header("Authorization") String token);
@@ -41,7 +40,7 @@ public interface ApiService {
 
     // ======= Region: Customer Role =======
     @POST("shirt/getall")
-    Call<ApiResponse<PagingShirt>> getShirtList(@Header("Authorization") String token);
+    Call<ApiResponse<PagingSearchResponse<Shirt>>> getShirtList(@Header("Authorization") String token);
 
     @GET("order/cart")
     Call<ApiResponse<Cart>> getMyCart(@Header("Authorization") String token);
@@ -53,7 +52,7 @@ public interface ApiService {
     Call<ApiResponse<Cart>> updateQuantity(@Header("Authorization") String token, @Body UpdateCartRequest request);
 
     @POST("shirt/getallbyname")
-    Call<ApiResponse<ProductSearchingPaging>> searchProduct(@Header("Authorization") String token, @Body SearchProduct request);
+    Call<ApiResponse<PagingSearchResponse<Shirt>>> searchProduct(@Header("Authorization") String token, @Body SearchProduct request);
 
     @POST("order/deteleitemincart")
     Call<ApiResponse<Cart>> removeItemFromCart(@Header("Authorization") String token, @Body RemoveItemInCartRequest request);
@@ -64,4 +63,11 @@ public interface ApiService {
     @GET("shirt/{id}")
     Call<ApiResponse<ProductSearching>> getShirtById(@Header("Authorization") String token, @Path("id") int id);
     // ======= End Region =======
+
+    // ======= Region: Admin Role =======
+    @POST("order/search")
+    Call<ApiResponse<PagingSearchResponse<Order>>> searchOrder(@Header("Authorization") String token, @Body OrderSearchingRequest request);
+
+    @GET("order-detail/getallorderdetailsbyorderid/{orderId}")
+    Call<ApiResponse<PagingSearchResponse<OrderDetail>>> getOrderDetail(@Header("Authorization") String token, @Path("orderId") String orderId);
 }
