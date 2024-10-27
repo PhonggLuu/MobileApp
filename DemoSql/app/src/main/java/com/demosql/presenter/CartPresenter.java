@@ -11,14 +11,10 @@ import com.demosql.model.entities.User;
 import com.demosql.model.request.RemoveItemInCartRequest;
 import com.demosql.model.request.ShirtRequest;
 import com.demosql.model.request.UpdateCartRequest;
-import com.demosql.model.response.AddToCartResponse;
 import com.demosql.model.response.ApiResponse;
-import com.demosql.model.response.CheckoutResponse;
-import com.demosql.model.response.PagingShirt;
 import com.demosql.network.ApiClient;
 import com.demosql.network.ApiService;
 import com.demosql.view.CartView;
-import com.demosql.view.ProductView;
 
 import java.util.List;
 

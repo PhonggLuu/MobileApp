@@ -7,6 +7,6 @@ public interface LoginView {
     void showLoginSuccess();
     void showLoginFailed();
     void showLoginError(String s);
-    void navigateToMainAndProfile(UserDetailResponse profileResponse);
+    void navigateToMainAdmin();
     void navigateToMain();
 }

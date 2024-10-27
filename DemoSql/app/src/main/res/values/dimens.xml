@@ -48,4 +48,6 @@
     <dimen name="text_size2">2sp</dimen>
     <dimen name="size_4">4dp</dimen>
     <dimen name="size_5">5dp</dimen>
+    <dimen name="size_300">300dp</dimen>
+    <dimen name="size_2">2dp</dimen>
 </resources>

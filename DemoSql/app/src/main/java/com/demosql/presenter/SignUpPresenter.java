@@ -1,15 +1,11 @@
 package com.demosql.presenter;
 
 import android.util.Log;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
-import com.demosql.model.entities.User;
-import com.demosql.model.request.UserLogin;
 import com.demosql.model.request.UserSignUp;
 import com.demosql.model.response.ApiResponse;
-import com.demosql.model.response.UserResponse;
 import com.demosql.model.response.UserSignUpResponse;
 import com.demosql.network.ApiClient;
 import com.demosql.network.ApiService;
