@@ -43,5 +43,9 @@
             android:exported="true" />
         <activity android:name=".activity.CheckoutActivity" />
         <activity android:name=".activity.MainAdminActivity" />
+
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-6952836541712644~5933560013"/>
     </application>
 </manifest>
