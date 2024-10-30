@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -14,17 +15,31 @@ import com.demosql.databinding.SigninLayoutBinding;
 import com.demosql.model.response.UserDetailResponse;
 import com.demosql.presenter.LoginPresenter;
 import com.demosql.view.LoginView;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 
 public class LoginActivity extends AppCompatActivity implements LoginView {
     private SigninLayoutBinding binding;
     private LoginPresenter presenter;
-
+    private AdView adView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         binding = SigninLayoutBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        new Thread(
+                () -> {
+                    // Initialize the Google Mobile Ads SDK on a background thread.
+                    MobileAds.initialize(this, initializationStatus -> {});
+                })
+                .start();
+        adView = binding.adView;
+        AdRequest adRequest = new AdRequest.Builder().build();
+        adView.loadAd(adRequest);
 
         presenter = new LoginPresenter(this);
         binding.login.setOnClickListener(view ->
@@ -51,6 +66,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
     }
 
     @Override
