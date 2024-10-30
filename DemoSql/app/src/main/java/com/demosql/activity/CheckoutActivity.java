@@ -34,7 +34,7 @@ public class CheckoutActivity extends AppCompatActivity implements CheckoutView 
         binding = CheckoutBinding.inflate(getLayoutInflater());
         binding.backToHome.setOnClickListener(v -> {
             String orderId = getIntent().getStringExtra("ORDER_ID");
-            checkout(orderId, 2);
+            presenter.checkout(orderId, 2);
             navToHome();
         });
         setContentView(binding.getRoot());
@@ -46,11 +46,6 @@ public class CheckoutActivity extends AppCompatActivity implements CheckoutView 
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-    }
-
-    @Override
-    public void checkout(String orderId, int status) {
-        presenter.checkout(orderId, status);
     }
 
     @Override

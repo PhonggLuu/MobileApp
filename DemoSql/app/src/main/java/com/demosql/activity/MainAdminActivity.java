@@ -10,6 +10,8 @@ import com.demosql.R;
 import com.demosql.databinding.AdminLayoutBinding;
 import com.demosql.fragment.AdminFragment;
 import com.demosql.fragment.OrderManagementFragment;
+import com.demosql.fragment.ProductManagementFragment;
+import com.demosql.fragment.UserManagementFragment;
 
 public class MainAdminActivity extends AppCompatActivity {
     private AdminLayoutBinding binding;
@@ -45,11 +47,11 @@ public class MainAdminActivity extends AppCompatActivity {
             setActiveButton(binding.homeBtn);
         });
         binding.userBtn.setOnClickListener(view -> {
-            loadFragment(new AdminFragment());
+            loadFragment(new UserManagementFragment());
             setActiveButton(binding.userBtn);
         });
         binding.productBtn.setOnClickListener(view -> {
-            loadFragment(new AdminFragment());
+            loadFragment(new ProductManagementFragment());
             setActiveButton(binding.productBtn);
         });
         binding.orderBtn.setOnClickListener(view -> {

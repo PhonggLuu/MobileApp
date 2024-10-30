@@ -4,10 +4,13 @@ import com.demosql.model.entities.Cart;
 import com.demosql.model.entities.Order;
 import com.demosql.model.entities.OrderDetail;
 import com.demosql.model.entities.Shirt;
+import com.demosql.model.entities.ShirtSize;
 import com.demosql.model.request.OrderSearchingRequest;
+import com.demosql.model.request.ProductSearchingRequest;
 import com.demosql.model.request.RemoveItemInCartRequest;
 import com.demosql.model.request.SearchProduct;
 import com.demosql.model.request.ShirtRequest;
+import com.demosql.model.request.ShirtSizeRequest;
 import com.demosql.model.request.UpdateCartRequest;
 import com.demosql.model.request.UserLogin;
 import com.demosql.model.request.UserSearchingRequest;
@@ -26,6 +29,7 @@ import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 
@@ -77,4 +81,10 @@ public interface ApiService {
 
     @GET("user/{id}")
     Call<ApiResponse<UserSignUpResponse>> getUserById(@Header("Authorization") String token, @Path("id") int id);
+
+    @POST("shirt/search")
+    Call<ApiResponse<PagingSearchResponse<Shirt>>> pagingProduct(@Header("Authorization") String token, @Body ProductSearchingRequest request);
+
+    @PUT("shirtsize")
+    Call<ApiResponse<ShirtSize>> updateShirtSize(@Header("Authorization") String token, @Query("id") int id, @Body ShirtSizeRequest shirtSize);
 }
