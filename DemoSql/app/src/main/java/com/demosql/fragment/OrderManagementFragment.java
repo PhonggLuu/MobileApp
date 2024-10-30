@@ -27,12 +27,6 @@ public class OrderManagementFragment extends Fragment implements OrderManagement
     private OrderManagementAdapter adapter;
     private OrderManagementLayoutBinding binding;
 
-    public static OrderManagementFragment newInstance(int pageNum, int status) {
-        Bundle args = new Bundle();
-        OrderManagementFragment fragment = new OrderManagementFragment();
-        fragment.setArguments(args);
-        return fragment;
-    }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

@@ -38,6 +38,7 @@ public class OrderDetailAdapter extends RecyclerView.Adapter<OrderDetailAdapter.
         holder.binding.itemName.setText(item.getShirtName());
         holder.binding.itemPrice.setText(String.valueOf(item.getPrice()));
         holder.binding.itemQuantity.setText(String.valueOf(item.getQuantity()));
+        holder.binding.itemSize.setText(String.valueOf(item.getSizeName()));
     }
 
     @Override
