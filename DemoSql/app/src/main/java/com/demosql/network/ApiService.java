@@ -70,4 +70,5 @@ public interface ApiService {
 
     @GET("order-detail/getallorderdetailsbyorderid/{orderId}")
     Call<ApiResponse<PagingSearchResponse<OrderDetail>>> getOrderDetail(@Header("Authorization") String token, @Path("orderId") String orderId);
+
 }
