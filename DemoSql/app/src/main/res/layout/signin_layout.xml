@@ -6,14 +6,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <!-- Background Image -->
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="match_parent"
         android:layout_height="500dp"
-        app:layout_constraintTop_toTopOf="parent"
+        android:scaleType="centerCrop"
         app:srcCompat="@drawable/store_entrance"
-        android:scaleType="centerCrop" />
+        app:layout_constraintTop_toTopOf="parent"/>
 
+    <!-- Rounded background with fields -->
     <FrameLayout
         android:id="@+id/rounded_background"
         android:layout_width="0dp"
@@ -21,64 +23,63 @@
         android:background="@drawable/rounded_background"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0">
 
+        <!-- Title Section -->
         <LinearLayout
-            android:id="@+id/linearLayout2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
             android:orientation="vertical"
             android:paddingStart="25dp"
-            android:paddingEnd="25dp">
+            android:paddingEnd="25dp"
+            android:layout_marginTop="10dp">
 
             <TextView
                 android:id="@+id/textView2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:text="Log In"
                 android:textColor="@color/black"
-                android:textSize="33dp"
+                android:textSize="33sp"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/textView3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:text="Hello there, log in to continue!"
-                android:textSize="18dp" />
+                android:textSize="18sp" />
         </LinearLayout>
 
+        <!-- Login Fields Section -->
         <LinearLayout
             android:id="@+id/linearLayout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="412dp"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="20dp"
             android:orientation="vertical"
             android:paddingStart="25dp"
-            android:paddingEnd="25dp"
-            android:layout_marginBottom="50dp"
-            android:layout_gravity="bottom">
+            android:paddingEnd="25dp">
 
+            <!-- Username Field -->
             <EditText
                 android:id="@+id/logUsername"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
+                android:layout_marginTop="0dp"
+                android:layout_marginBottom="0dp"
                 android:background="@drawable/edittext_background"
                 android:drawableLeft="@drawable/baseline_account_circle_24"
                 android:drawablePadding="13dp"
-                android:ems="10"
                 android:hint="Username"
                 android:inputType="textPersonName"
                 android:paddingStart="20dp"
                 android:textColorHint="#80000000" />
 
+            <!-- Password Field with Icon -->
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -99,13 +100,8 @@
                     android:id="@+id/logPassword"
                     android:layout_width="0dp"
                     android:layout_height="50dp"
-                    android:layout_centerVertical="true"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginEnd="8dp"
                     android:layout_toStartOf="@id/ivEye"
                     android:layout_toEndOf="@id/ivKey"
-                    android:background="@drawable/password"
-                    android:ems="10"
                     android:gravity="center_vertical"
                     android:hint="Password"
                     android:inputType="textPassword"
@@ -122,6 +118,7 @@
                     android:src="@drawable/baseline_remove_red_eye_24" />
             </RelativeLayout>
 
+            <!-- Checkbox and Forgot Password -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -146,17 +143,19 @@
                     android:textColor="#f19d2c" />
             </LinearLayout>
 
+            <!-- Login Button -->
             <Button
                 android:id="@+id/login"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
                 android:layout_marginTop="22dp"
+                android:backgroundTint="#EB8D21"
                 android:text="Login"
                 android:textAllCaps="false"
-                android:backgroundTint="#EB8D21"
                 android:textColor="#fff"
                 android:textSize="18sp" />
 
+            <!-- Signup Section -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
@@ -175,11 +174,26 @@
                     android:id="@+id/signup"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:clickable="true"
                     android:text="  Create account"
                     android:textAlignment="center"
-                    android:textColor="#f19d2c"
-                    android:clickable="true"/>
+                    android:textColor="#f19d2c" />
             </LinearLayout>
+
+            <com.google.android.gms.ads.AdView
+                android:id="@+id/adView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                app:adSize="BANNER"
+                app:adUnitId="ca-app-pub-6952836541712644/5933560013"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
         </LinearLayout>
     </FrameLayout>
+
+    <!-- AdView for Banner Ad -->
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
