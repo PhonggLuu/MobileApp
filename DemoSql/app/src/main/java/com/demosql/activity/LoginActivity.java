@@ -11,13 +11,16 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.demosql.databinding.SigninLayoutBinding;
-import com.demosql.model.response.UserDetailResponse;
 import com.demosql.presenter.LoginPresenter;
 import com.demosql.view.LoginView;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
 
 public class LoginActivity extends AppCompatActivity implements LoginView {
     private SigninLayoutBinding binding;
     private LoginPresenter presenter;
+    private AdView adView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,31 +29,55 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
         binding = SigninLayoutBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        // Initialize presenter
         presenter = new LoginPresenter(this);
-        binding.login.setOnClickListener(view ->
-        {
+
+        // Initialize AdView and load ad
+        adView = binding.adView;
+        MobileAds.initialize(this, initializationStatus -> {
+            Log.d("AdMob", "AdMob initialized");
+            loadAd();
+        });
+
+        // Set up login button click listener
+        binding.login.setOnClickListener(view -> {
             String email = binding.logUsername.getText().toString().trim();
             String password = binding.logPassword.getText().toString().trim();
-            try {
-                presenter.handleLogin(email, password);
-            } catch (Exception e) {
-                Log.e("LoginActivity", "Error during login", e);
-                Toast.makeText(this, "Có lỗi xảy ra. Vui lòng thử lại!", Toast.LENGTH_SHORT).show();
+            if (email.isEmpty() || password.isEmpty()) {
+                showEmptyFieldsError();
+            } else {
+                try {
+                    presenter.handleLogin(email, password);
+                } catch (Exception e) {
+                    Log.e("LoginActivity", "Error during login", e);
+                    Toast.makeText(this, "Có lỗi xảy ra. Vui lòng thử lại!", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
-        binding.signup.setOnClickListener(view ->
-        {
+        // Set up signup button click listener
+        binding.signup.setOnClickListener(view -> {
             Intent intent = new Intent(this, SignUpActivity.class);
             startActivity(intent);
             finish();
         });
 
+        // Handle window insets for padding adjustments
         ViewCompat.setOnApplyWindowInsetsListener(binding.dangnhap, (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+    }
+
+    // Load the ad into AdView
+    private void loadAd() {
+        AdRequest adRequest = new AdRequest.Builder().build();
+        if (adView != null) {
+            adView.loadAd(adRequest);
+        } else {
+            Log.e("LoginActivity", "AdView is null, cannot load ad.");
+        }
     }
 
     @Override
@@ -75,7 +102,6 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
     @Override
     public void showLoginSuccess() {
         Toast.makeText(this, "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
-        //Intent intent = new Intent(this, WelcomeActivity.class);
     }
 
     @Override
@@ -85,6 +111,6 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
 
     @Override
     public void showLoginError(String s) {
-        Toast.makeText(this, "Đăng nhập thất bại", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, s, Toast.LENGTH_SHORT).show();
     }
 }
