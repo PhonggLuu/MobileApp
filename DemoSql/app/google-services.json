@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "783171679930",
+    "project_id": "admod-c20e1",
+    "storage_bucket": "admod-c20e1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:783171679930:android:329fc13e0782875d843483",
+        "android_client_info": {
+          "package_name": "com.demosql"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB5gzC_MWPmam3kMvuMLekMG-aEa20itpg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
