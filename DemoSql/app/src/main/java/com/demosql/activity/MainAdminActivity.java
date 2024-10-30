@@ -12,7 +12,6 @@ import com.demosql.fragment.AdminFragment;
 import com.demosql.fragment.OrderManagementFragment;
 import com.demosql.fragment.ProductManagementFragment;
 import com.demosql.fragment.UserManagementFragment;
-
 public class MainAdminActivity extends AppCompatActivity {
     private AdminLayoutBinding binding;
     private View activeButton;
@@ -47,11 +46,19 @@ public class MainAdminActivity extends AppCompatActivity {
             setActiveButton(binding.homeBtn);
         });
         binding.userBtn.setOnClickListener(view -> {
+<<<<<<< .mine
             loadFragment(new UserManagementFragment());
+=======
+            loadFragment(new ProfileFragment());
+>>>>>>> .theirs
             setActiveButton(binding.userBtn);
         });
         binding.productBtn.setOnClickListener(view -> {
+<<<<<<< .mine
             loadFragment(new ProductManagementFragment());
+=======
+            loadFragment(new ProductFragment());
+>>>>>>> .theirs
             setActiveButton(binding.productBtn);
         });
         binding.orderBtn.setOnClickListener(view -> {
