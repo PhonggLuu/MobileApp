@@ -12,6 +12,7 @@ import com.demosql.model.request.SearchProduct;
 import com.demosql.model.request.ShirtRequest;
 import com.demosql.model.request.ShirtSizeRequest;
 import com.demosql.model.request.UpdateCartRequest;
+import com.demosql.model.request.UpdateProductRequest;
 import com.demosql.model.request.UserLogin;
 import com.demosql.model.request.UserSearchingRequest;
 import com.demosql.model.request.UserSignUp;
@@ -87,4 +88,7 @@ public interface ApiService {
 
     @PUT("shirtsize")
     Call<ApiResponse<ShirtSize>> updateShirtSize(@Header("Authorization") String token, @Query("id") int id, @Body ShirtSizeRequest shirtSize);
+
+    @PUT("shirt/{id}")
+    Call<ApiResponse<Shirt>> updateShirt(@Header("Authorization") String token, @Path("id") int id, @Body UpdateProductRequest shirt);
 }

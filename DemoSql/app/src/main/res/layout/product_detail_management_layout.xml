@@ -95,6 +95,26 @@
             android:layout_marginTop="@dimen/size_10"
             android:orientation="vertical">
             <TextView
+                android:id="@+id/typeShirtId"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone" />
+            <TextView
+                android:id="@+id/playerId"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone" />
+            <TextView
+                android:id="@+id/status"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone" />
+            <TextView
+                android:id="@+id/imageUrl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone" />
+            <TextView
                 android:id="@+id/EditText3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -144,6 +164,36 @@
                     android:hint="playerName"
                     android:textColor="#000000"
                     android:textSize="18sp"
+                    android:textAlignment="textEnd"
+                    android:focusable="false"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayout10"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toStartOf="@+id/guideline2"
+                app:layout_constraintStart_toStartOf="@+id/guideline"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout4" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingVertical="15dp"
+                    android:text="Số áo đấu"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:textColor="#000000"/>
+
+                <EditText
+                    android:id="@+id/playerNumber"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="playerNumber"
+                    android:textColor="#000000"
+                    android:textSize="18sp"
                     android:textAlignment="textEnd" />
             </LinearLayout>
 
@@ -154,7 +204,7 @@
                 android:orientation="horizontal"
                 app:layout_constraintEnd_toStartOf="@+id/guideline2"
                 app:layout_constraintStart_toStartOf="@+id/guideline"
-                app:layout_constraintTop_toBottomOf="@+id/linearLayout5" >
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout10" >
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -173,7 +223,8 @@
                     android:hint="clubName"
                     android:textColor="#000000"
                     android:textSize="18sp"
-                    android:textAlignment="textEnd" />
+                    android:textAlignment="textEnd"
+                    android:focusable="false"/>
             </LinearLayout>
 
             <LinearLayout
@@ -202,8 +253,39 @@
                     android:hint="seasonName"
                     android:textColor="#000000"
                     android:textSize="18sp"
-                    android:textAlignment="textEnd" />
+                    android:textAlignment="textEnd"
+                    android:focusable="false"/>
             </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayout11"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toStartOf="@+id/guideline2"
+                app:layout_constraintStart_toStartOf="@+id/guideline"
+                app:layout_constraintTop_toBottomOf="@+id/description" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingVertical="15dp"
+                    android:text="Giá sản phẩm"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:textColor="#000000"/>
+
+                <EditText
+                    android:id="@+id/price"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="price"
+                    android:textColor="#000000"
+                    android:textSize="18sp"
+                    android:textAlignment="textEnd"/>
+            </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
