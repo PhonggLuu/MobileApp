@@ -91,4 +91,7 @@ public interface ApiService {
 
     @PUT("shirt/{id}")
     Call<ApiResponse<Shirt>> updateShirt(@Header("Authorization") String token, @Path("id") int id, @Body UpdateProductRequest shirt);
+
+    @PUT("user/block/{id}")
+    Call<ApiResponse<String>> blockUser(@Header("Authorization") String token, @Path("id") int id);
 }

@@ -35,6 +35,11 @@ public class SignUpPresenter {
             return;
         }
 
+        if(!email.endsWith("@gmail.com") && !email.endsWith("@fpt.edu.vn")){
+            view.showEmailFailed();
+            return;
+        }
+
         UserSignUp userSignUp = new UserSignUp(email, password, fullName, phoneNumber);
         apiService.register(userSignUp).enqueue(new Callback<ApiResponse<UserSignUpResponse>>() {
             @Override

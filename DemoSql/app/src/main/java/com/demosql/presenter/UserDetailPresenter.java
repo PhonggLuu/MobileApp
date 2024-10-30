@@ -29,6 +29,7 @@ public class UserDetailPresenter {
         this.view = view;
         apiService = ApiClient.getInstance().getApiService();
     }
+
     public void getUserDetails(int UserId) {
         apiService.getUserById("Bearer " + User.getToken(), UserId).enqueue(new Callback<ApiResponse<UserSignUpResponse>>() {
             @Override
@@ -36,7 +37,7 @@ public class UserDetailPresenter {
                 if (response.isSuccessful()) {
                     UserSignUpResponse User  = response.body().getData();
                     if (User != null) {
-                        Toast.makeText(context, "Chi tiết sản phẩm", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(context, "Chi tiết người dùng", Toast.LENGTH_SHORT).show();
                         view.showUserDetailed(User);
                     } else {
                         Log.e(this.getClass().getName(), "Error: Get User data failed");
@@ -49,6 +50,25 @@ public class UserDetailPresenter {
             @Override
             public void onFailure(Call<ApiResponse<UserSignUpResponse>> call, Throwable throwable) {
                 Log.e(this.getClass().getName(), "Get User failed");
+            }
+        });
+    }
+
+    public void lockAccount(int UserId) {
+        apiService.blockUser("Bearer " + User.getToken(), UserId).enqueue(new Callback<ApiResponse<String>>() {
+            @Override
+            public void onResponse(Call<ApiResponse<String>> call, Response<ApiResponse<String>> response) {
+                if (response.isSuccessful()) {
+                    Toast.makeText(context, "Chặn người dùng thành công", Toast.LENGTH_SHORT).show();
+                    getUserDetails(UserId);
+                } else {
+                    Log.e(this.getClass().getName(), "Error: " + response.message());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ApiResponse<String>> call, Throwable throwable) {
+                Log.e(this.getClass().getName(), "Block user failed");
             }
         });
     }

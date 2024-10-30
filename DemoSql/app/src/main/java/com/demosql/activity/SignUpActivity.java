@@ -2,10 +2,13 @@ package com.demosql.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputType;
+import android.view.View;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.demosql.R;
 import com.demosql.databinding.SignupLayoutBinding;
 import com.demosql.presenter.SignUpPresenter;
 import com.demosql.view.SignUpView;
@@ -14,6 +17,8 @@ public class SignUpActivity extends AppCompatActivity implements SignUpView {
 
     private SignupLayoutBinding binding;
     private SignUpPresenter presenter;
+    private boolean isPasswordVisible;
+    private boolean isRepasswordVisible;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +37,34 @@ public class SignUpActivity extends AppCompatActivity implements SignUpView {
             String fullName = binding.logFullname.getText().toString();
             String phoneNumber = binding.logPhoneNumber.getText().toString();
             presenter.handleSignUp(email, password, confirmPassword, fullName, phoneNumber);
+        });
+
+        binding.ivEye1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (isPasswordVisible) {
+                    binding.logPassword.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                    binding.ivEye1.setImageResource(R.drawable.baseline_remove_red_eye_24);
+                } else {
+                    binding.logPassword.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
+                }
+                binding.logPassword.setSelection(binding.logPassword.length());
+                isPasswordVisible = !isPasswordVisible;
+            }
+        });
+
+        binding.ivEye.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (isRepasswordVisible) {
+                    binding.logRepassword.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                    binding.ivEye1.setImageResource(R.drawable.baseline_remove_red_eye_24);
+                } else {
+                    binding.logRepassword.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
+                }
+                binding.logRepassword.setSelection(binding.logRepassword.length());
+                isRepasswordVisible = !isRepasswordVisible;
+            }
         });
 
         binding.buttonRelogin.setOnClickListener(view -> {
@@ -71,8 +104,8 @@ public class SignUpActivity extends AppCompatActivity implements SignUpView {
     }
 
     @Override
-    public void showUserExistError() {
-        Toast.makeText(this, "User already exists. Please choose another username.", Toast.LENGTH_SHORT).show();
+    public void showEmailFailed() {
+        Toast.makeText(this, "Email is not valid. Please try again.", Toast.LENGTH_SHORT).show();
     }
 
     @Override

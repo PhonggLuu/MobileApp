@@ -2,7 +2,9 @@ package com.demosql.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputType;
 import android.util.Log;
+import android.view.View;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,6 +12,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.demosql.R;
 import com.demosql.databinding.SigninLayoutBinding;
 import com.demosql.presenter.LoginPresenter;
 import com.demosql.view.LoginView;
@@ -21,6 +24,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
     private SigninLayoutBinding binding;
     private LoginPresenter presenter;
     private AdView adView;
+    private boolean isPasswordVisible;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +41,20 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
         MobileAds.initialize(this, initializationStatus -> {
             Log.d("AdMob", "AdMob initialized");
             loadAd();
+        });
+
+        binding.ivEye.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (isPasswordVisible) {
+                    binding.logPassword.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                    binding.ivEye.setImageResource(R.drawable.baseline_remove_red_eye_24); // Hình ảnh 'ẩn'
+                } else {
+                    binding.logPassword.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
+                }
+                binding.logPassword.setSelection(binding.logPassword.length());
+                isPasswordVisible = !isPasswordVisible;
+            }
         });
 
         // Set up login button click listener

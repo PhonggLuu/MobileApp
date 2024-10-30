@@ -45,7 +45,7 @@ public class ProductManagementAdapter extends RecyclerView.Adapter<ProductManage
         DecimalFormat decimalFormat = new DecimalFormat("#,###.0");
         String formattedPrice = decimalFormat.format(Product.getPrice());
         holder.binding.price.setText(formattedPrice);
-        //holder.binding.price.setText(String.valueOf(Product.getPrice()));
+        holder.binding.status.setText(Product.getStatus() > 0 ? "Còn hàng" : "Hết hàng");
         holder.binding.layoutProduct.setOnClickListener(v -> {
             ProductDetailManagementFragment ProductDetailFragment = ProductDetailManagementFragment.newInstance(Product.getId());
             FragmentManager fragmentManager = ((AppCompatActivity) context).getSupportFragmentManager();
@@ -59,13 +59,6 @@ public class ProductManagementAdapter extends RecyclerView.Adapter<ProductManage
     @Override
     public int getItemCount() {
         return ProductList.size();
-    }
-
-    private void showStatus(boolean isDelete, ItemProductLayoutBinding binding) {
-        if(isDelete)
-            binding.status.setText("Khóa");
-        else
-            binding.status.setText("Hoạt động");
     }
 
     public void updateProductManagementLayout(List<Shirt> newProductList) {
