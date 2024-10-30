@@ -28,7 +28,11 @@ public class AdminFragment extends Fragment {
             fragmentTransaction.commit();
         });
         binding.productsBtn.setOnClickListener(v -> {
-
+            FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.replace(R.id.fragment_container, new ProductManagementFragment());
+            fragmentTransaction.addToBackStack(null); // Optional: if you want to allow users to navigate back
+            fragmentTransaction.commit();
         });
         binding.usersBtn.setOnClickListener(v -> {
             FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();

@@ -32,6 +32,9 @@ public class LoginPresenter {
         } else {*/
             //UserLogin userLogin = new UserLogin("luuhiep16092002@gmail.com", "Luuhiep113@");
             UserLogin userLogin = new UserLogin("luuphong016@gmail.com", "Phong9702@");
+            //UserLogin userLogin = new UserLogin("quangde40@gmail.com", "123456");
+            //UserLogin userLogin = new UserLogin("nguyenngoc@gmail.com", "Nguyen123");
+            //UserLogin userLogin = new UserLogin("hoangnq", "hoangtoc123");
             //UserLogin userLogin = new UserLogin(email, password);
             apiService.login(userLogin).enqueue(new Callback<ApiResponse<UserLoginResponse>>() {
                 @Override

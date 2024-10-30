@@ -7,7 +7,7 @@ import lombok.Data;
 public class Order {
     private String id;
     private int userId;
-    private String userName;
+    private String userUserName;
     private int totalPrice;
     private int shipPrice;
     private int deposit; // Có thể là null
@@ -33,12 +33,12 @@ public class Order {
         this.userId = userId;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getUserUserName() {
+        return userUserName;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUserUserName(String userUserName) {
+        this.userUserName = userUserName;
     }
 
     public int getTotalPrice() {

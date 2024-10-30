@@ -41,8 +41,8 @@ public class OrderManagementAdapter extends RecyclerView.Adapter<OrderManagement
         //Set value for order information
         holder.binding.stt.setText(String.valueOf(i + 1));
         holder.binding.orderId.setText(order.getId());
-        if(order.getUserName() != null)
-            holder.binding.userName.setText(order.getUserName());
+        if(order.getUserUserName() != null)
+            holder.binding.userName.setText(order.getUserUserName());
         showPrice(order.getTotalPrice(), holder.binding);
         showStatus(order.getStatus(), holder.binding);
         showDate(order.getDate(), holder.binding);
