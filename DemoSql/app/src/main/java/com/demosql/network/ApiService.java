@@ -10,6 +10,7 @@ import com.demosql.model.request.SearchProduct;
 import com.demosql.model.request.ShirtRequest;
 import com.demosql.model.request.UpdateCartRequest;
 import com.demosql.model.request.UserLogin;
+import com.demosql.model.request.UserSearchingRequest;
 import com.demosql.model.request.UserSignUp;
 import com.demosql.model.response.ApiResponse;
 import com.demosql.model.response.CheckoutResponse;
@@ -71,4 +72,9 @@ public interface ApiService {
     @GET("order-detail/getallorderdetailsbyorderid/{orderId}")
     Call<ApiResponse<PagingSearchResponse<OrderDetail>>> getOrderDetail(@Header("Authorization") String token, @Path("orderId") String orderId);
 
+    @POST("user/search")
+    Call<ApiResponse<PagingSearchResponse<UserSignUpResponse>>> searchUser(@Header("Authorization") String token, @Body UserSearchingRequest request);
+
+    @GET("user/{id}")
+    Call<ApiResponse<UserSignUpResponse>> getUserById(@Header("Authorization") String token, @Path("id") int id);
 }
