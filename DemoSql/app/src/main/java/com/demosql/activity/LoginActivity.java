@@ -38,7 +38,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
 
         // Initialize AdView and load ad
         adView = binding.adView;
-        MobileAds.initialize(this, initializationStatus -> {
+        MobileAds.initialize(LoginActivity.this, initializationStatus -> {
             Log.d("AdMob", "AdMob initialized");
             loadAd();
         });
@@ -57,6 +57,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
             }
         });
 
+
         // Set up login button click listener
         binding.login.setOnClickListener(view -> {
             String email = binding.logUsername.getText().toString().trim();
@@ -71,6 +72,12 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
                     Toast.makeText(this, "Có lỗi xảy ra. Vui lòng thử lại!", Toast.LENGTH_SHORT).show();
                 }
             //}
+        });
+
+        binding.forgotPassword.setOnClickListener(view -> {
+            Intent intent = new Intent(this, ForgotPasswordActivity.class);
+            startActivity(intent);
+            finish();
         });
 
         // Set up signup button click listener

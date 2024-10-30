@@ -136,13 +136,14 @@
                     android:text="Remember Me" />
 
                 <TextView
-                    android:id="@+id/tvForgotPassword"
+                    android:id="@+id/forgotPassword"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Forget Your Password"
                     android:textAlignment="center"
-                    android:textColor="#f19d2c" />
+                    android:textColor="#f19d2c"
+                    android:clickable="true"/>
             </LinearLayout>
 
             <!-- Login Button -->

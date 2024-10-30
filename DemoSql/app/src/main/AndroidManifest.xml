@@ -43,6 +43,7 @@
             android:exported="true" />
         <activity android:name=".activity.CheckoutActivity" />
         <activity android:name=".activity.MainAdminActivity" />
+        <activity android:name=".activity.ForgotPasswordActivity" />
 
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
