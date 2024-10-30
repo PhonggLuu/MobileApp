@@ -39,6 +39,7 @@ public class OrderManagementAdapter extends RecyclerView.Adapter<OrderManagement
     public void onBindViewHolder(@NonNull OrderManagementViewHolder holder, int i) {
         Order order = orderList.get(i);
         //Set value for order information
+        holder.binding.stt.setText(String.valueOf(i + 1));
         holder.binding.orderId.setText(order.getId());
         if(order.getUserName() != null)
             holder.binding.userName.setText(order.getUserName());
