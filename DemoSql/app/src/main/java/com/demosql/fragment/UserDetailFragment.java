@@ -61,6 +61,7 @@ public class UserDetailFragment extends Fragment implements UserDetailView {
         binding.roleName.setText(String.valueOf(User.getRoleName()));
         if(User.isDelete()) {
             binding.isDelete.setText("Đã bị khóa");
+            binding.lockAccountBtn.setVisibility(View.GONE);
         } else {
             binding.isDelete.setText("Đang hoạt động");
         }
@@ -69,5 +70,8 @@ public class UserDetailFragment extends Fragment implements UserDetailView {
         } else {
             binding.isVerify.setText("Chưa xác minh");
         }
+        binding.lockAccountBtn.setOnClickListener(v -> {
+            presenter.lockAccount(User.getId());
+        });
     }
 }

@@ -4,6 +4,6 @@ public interface SignUpView {
     void showEmptyFieldsError();
     void showSignUpSuccess();
     void showSignUpFailed();
-    void showUserExistError();
+    void showEmailFailed();
     void navigateToLogin();
 }
