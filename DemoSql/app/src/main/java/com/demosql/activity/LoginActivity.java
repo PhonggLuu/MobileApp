@@ -43,16 +43,16 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
         binding.login.setOnClickListener(view -> {
             String email = binding.logUsername.getText().toString().trim();
             String password = binding.logPassword.getText().toString().trim();
-            if (email.isEmpty() || password.isEmpty()) {
+            /*if (email.isEmpty() || password.isEmpty()) {
                 showEmptyFieldsError();
-            } else {
+            } else {*/
                 try {
                     presenter.handleLogin(email, password);
                 } catch (Exception e) {
                     Log.e("LoginActivity", "Error during login", e);
                     Toast.makeText(this, "Có lỗi xảy ra. Vui lòng thử lại!", Toast.LENGTH_SHORT).show();
                 }
-            }
+            //}
         });
 
         // Set up signup button click listener
