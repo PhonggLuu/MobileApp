@@ -39,7 +39,7 @@ public class UserManagementAdapter extends RecyclerView.Adapter<UserManagementAd
         holder.binding.userName.setText(User.getUserName());
         holder.binding.email.setText(User.getEmail());
         holder.binding.role.setText(User.getRoleName());
-        showStatus(User.isDelete(), holder.binding);
+        showStatus(User.isStatus(), holder.binding);
         holder.binding.layoutUser.setOnClickListener(v -> {
             UserDetailFragment userDetailFragment = UserDetailFragment.newInstance(User.getId());
             FragmentManager fragmentManager = ((AppCompatActivity) context).getSupportFragmentManager();
@@ -55,8 +55,8 @@ public class UserManagementAdapter extends RecyclerView.Adapter<UserManagementAd
         return UserList.size();
     }
 
-    private void showStatus(boolean isDelete, ItemUserLayoutBinding binding) {
-        if(isDelete)
+    private void showStatus(boolean isStatus, ItemUserLayoutBinding binding) {
+        if(!isStatus)
             binding.status.setText("Khóa");
         else
             binding.status.setText("Hoạt động");
