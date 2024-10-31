@@ -1,5 +1,6 @@
 package com.demosql.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +12,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.bumptech.glide.Glide;
 import com.demosql.R;
+import com.demosql.activity.LoginActivity;
 import com.demosql.databinding.HomeLayoutBinding;
 import com.demosql.model.entities.User;
 
@@ -40,6 +42,11 @@ public class AdminFragment extends Fragment {
             fragmentTransaction.replace(R.id.fragment_container, new UserManagementFragment());
             fragmentTransaction.addToBackStack(null); // Optional: if you want to allow users to navigate back
             fragmentTransaction.commit();
+        });
+        binding.btnLogOut.setOnClickListener(v -> {
+            Intent intent = new Intent(getActivity(), LoginActivity.class);
+            startActivity(intent);
+            getActivity().finish();
         });
         return binding.getRoot();
     }
