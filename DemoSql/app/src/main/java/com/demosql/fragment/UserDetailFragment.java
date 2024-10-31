@@ -59,11 +59,11 @@ public class UserDetailFragment extends Fragment implements UserDetailView {
         binding.address.setText(User.getAddress());
         binding.phoneNumber.setText(User.getPhoneNumber());
         binding.roleName.setText(String.valueOf(User.getRoleName()));
-        if(User.isDelete()) {
-            binding.isDelete.setText("Đã bị khóa");
+        if(!User.isStatus()) {
+            binding.isStatus.setText("Đã bị khóa");
             binding.lockAccountBtn.setVisibility(View.GONE);
         } else {
-            binding.isDelete.setText("Đang hoạt động");
+            binding.isStatus.setText("Đang hoạt động");
         }
         if(User.isVerify()) {
             binding.isVerify.setText("Đã xác minh");
